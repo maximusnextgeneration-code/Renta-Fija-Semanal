@@ -213,7 +213,7 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: 0.05em;
   color: rgba(255,255,255,0.72);
 }
-.hero-stats .delta.up { color: #f3b94d; }
+.hero-stats .delta.up { color: var(--lcu-accent); }
 .hero-stats .delta.dn { color: #6dd2a8; }
 
 .hero-meta {
@@ -879,6 +879,330 @@ a { color: inherit; text-decoration: none; }
 }
 
 @media print { .topnav { display: none; } .section { page-break-inside: avoid; } body { background: #fff; } }
+
+/* ── Curve table (added) ── */
+.curve-table-wrap {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+.curve-table-head { margin-bottom: 14px; }
+.curve-table-head .t { font-size: 14px; font-weight: 700; color: var(--lcu-navy); }
+.curve-table-head .s { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-muted); margin-top: 3px; }
+
+.curve-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+.curve-table thead {
+  background: var(--lcu-navy);
+  color: #fff;
+}
+.curve-table th {
+  text-align: left;
+  padding: 11px 14px;
+  font-size: 10px; font-weight: 800;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  white-space: nowrap;
+}
+.curve-table th.num { text-align: right; }
+.curve-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+}
+.curve-table td.tn {
+  font-weight: 800;
+  color: var(--lcu-navy);
+  font-size: 13px;
+}
+.curve-table td.num { text-align: right; font-weight: 600; color: var(--lcu-navy); }
+.curve-table td.curr {
+  font-weight: 800;
+  color: var(--lcu-accent);
+  background: var(--lcu-accent-soft);
+}
+.curve-table td.bps.pos { color: var(--neg); font-weight: 700; }
+.curve-table td.bps.neg { color: var(--pos); font-weight: 700; }
+.curve-table tbody tr:hover { background: var(--lcu-gray-2); }
+.curve-table tbody tr:hover td.curr { background: var(--lcu-accent-100); }
+
+/* ── Spreads · 4 mini charts grid (added) ── */
+.spreads-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+@media (max-width: 940px) { .spreads-grid { grid-template-columns: 1fr; } }
+.chart-card.mini { padding: 22px 24px 18px; }
+.chart-card.mini .chart-head { margin-bottom: 14px; }
+.chart-card.mini .title { font-size: 14px; }
+.chart-card.mini .sub { font-size: 10px; }
+.chart-card.mini .chart-legend { gap: 10px; }
+.chart-card.mini .chart-legend .lg { font-size: 11px; padding: 4px 8px; }
+.chart-card.mini .chart-legend .sw { width: 18px; height: 3px; }
+/* Hover-on-legend interactivity for mini-charts */
+.sp-line { transition: opacity .2s, stroke-width .2s; }
+.sp-line.dim { opacity: 0.15; }
+.sp-line.boost { stroke-width: 3.4; }
+
+/* ── Back-to-top button (added) ── */
+.back-to-top {
+  position: fixed;
+  bottom: 28px; right: 28px;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--lcu-navy);
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 22px rgba(12,46,78,0.28);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s, background .15s, transform .15s;
+  z-index: 60;
+}
+.back-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+.back-to-top:hover {
+  background: var(--lcu-accent);
+  transform: translateY(-2px);
+}
+.back-to-top svg { width: 18px; height: 18px; }
+
+/* ── Color unification (added) ── */
+/* Use a single brand orange for accents/eyebrows/datavis hardcoded yellows */
+.hero-stats .delta.up { color: var(--lcu-accent-300); }
+.hero-stats .delta.dn { color: var(--pos); }
+.feature .grid .cell .val.neg { color: var(--neg); }
+
+/* Destacado "val" default color was inline yellow → use white (parent context is dark navy) */
+.feature .grid .cell .val { color: #fff; }
+
+/* ── Pos/Neg coloring helpers for tables (added) ── */
+.num.pos { color: var(--pos); font-weight: 700; }
+.num.neg { color: var(--neg); font-weight: 700; }
+
+
+/* ── Curve table (added) ── */
+.curve-table-wrap {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+.curve-table-head { margin-bottom: 14px; }
+.curve-table-head .t { font-size: 14px; font-weight: 700; color: var(--lcu-navy); }
+.curve-table-head .s { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-muted); margin-top: 3px; }
+
+.curve-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+.curve-table thead {
+  background: var(--lcu-navy);
+  color: #fff;
+}
+.curve-table th {
+  text-align: left;
+  padding: 11px 14px;
+  font-size: 10px; font-weight: 800;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  white-space: nowrap;
+}
+.curve-table th.num { text-align: right; }
+.curve-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+}
+.curve-table td.tn {
+  font-weight: 800;
+  color: var(--lcu-navy);
+  font-size: 13px;
+}
+.curve-table td.num { text-align: right; font-weight: 600; color: var(--lcu-navy); }
+.curve-table td.curr {
+  font-weight: 800;
+  color: var(--lcu-accent);
+  background: var(--lcu-accent-soft);
+}
+.curve-table td.bps.pos { color: var(--neg); font-weight: 700; }
+.curve-table td.bps.neg { color: var(--pos); font-weight: 700; }
+.curve-table tbody tr:hover { background: var(--lcu-gray-2); }
+.curve-table tbody tr:hover td.curr { background: var(--lcu-accent-100); }
+
+/* ── Spreads · 4 mini charts grid (added) ── */
+.spreads-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+@media (max-width: 940px) { .spreads-grid { grid-template-columns: 1fr; } }
+.chart-card.mini { padding: 22px 24px 18px; }
+.chart-card.mini .chart-head { margin-bottom: 14px; }
+.chart-card.mini .title { font-size: 14px; }
+.chart-card.mini .sub { font-size: 10px; }
+.chart-card.mini .chart-legend { gap: 10px; }
+.chart-card.mini .chart-legend .lg { font-size: 11px; padding: 4px 8px; }
+.chart-card.mini .chart-legend .sw { width: 18px; height: 3px; }
+/* Hover-on-legend interactivity for mini-charts */
+.sp-line { transition: opacity .2s, stroke-width .2s; }
+.sp-line.dim { opacity: 0.15; }
+.sp-line.boost { stroke-width: 3.4; }
+
+/* ── Back-to-top button (added) ── */
+.back-to-top {
+  position: fixed;
+  bottom: 28px; right: 28px;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--lcu-navy);
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 22px rgba(12,46,78,0.28);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s, background .15s, transform .15s;
+  z-index: 60;
+}
+.back-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+.back-to-top:hover {
+  background: var(--lcu-accent);
+  transform: translateY(-2px);
+}
+.back-to-top svg { width: 18px; height: 18px; }
+
+/* ── Color unification (added) ── */
+/* Use a single brand orange for accents/eyebrows/datavis hardcoded yellows */
+.hero-stats .delta.up { color: var(--lcu-accent-300); }
+.hero-stats .delta.dn { color: var(--pos); }
+.feature .grid .cell .val.neg { color: var(--neg); }
+
+/* Destacado "val" default color was inline yellow → use white (parent context is dark navy) */
+.feature .grid .cell .val { color: #fff; }
+
+/* ── Pos/Neg coloring helpers for tables (added) ── */
+.num.pos { color: var(--pos); font-weight: 700; }
+.num.neg { color: var(--neg); font-weight: 700; }
+
+
+/* ── Curve table (added) ── */
+.curve-table-wrap {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+.curve-table-head { margin-bottom: 14px; }
+.curve-table-head .t { font-size: 14px; font-weight: 700; color: var(--lcu-navy); }
+.curve-table-head .s { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-muted); margin-top: 3px; }
+
+.curve-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+.curve-table thead {
+  background: var(--lcu-navy);
+  color: #fff;
+}
+.curve-table th {
+  text-align: left;
+  padding: 11px 14px;
+  font-size: 10px; font-weight: 800;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  white-space: nowrap;
+}
+.curve-table th.num { text-align: right; }
+.curve-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+}
+.curve-table td.tn {
+  font-weight: 800;
+  color: var(--lcu-navy);
+  font-size: 13px;
+}
+.curve-table td.num { text-align: right; font-weight: 600; color: var(--lcu-navy); }
+.curve-table td.curr {
+  font-weight: 800;
+  color: var(--lcu-accent);
+  background: var(--lcu-accent-soft);
+}
+.curve-table td.bps.pos { color: var(--neg); font-weight: 700; }
+.curve-table td.bps.neg { color: var(--pos); font-weight: 700; }
+.curve-table tbody tr:hover { background: var(--lcu-gray-2); }
+.curve-table tbody tr:hover td.curr { background: var(--lcu-accent-100); }
+
+/* ── Spreads · 4 mini charts grid (added) ── */
+.spreads-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+@media (max-width: 940px) { .spreads-grid { grid-template-columns: 1fr; } }
+.chart-card.mini { padding: 22px 24px 18px; }
+.chart-card.mini .chart-head { margin-bottom: 14px; }
+.chart-card.mini .title { font-size: 14px; }
+.chart-card.mini .sub { font-size: 10px; }
+.chart-card.mini .chart-legend { gap: 10px; }
+.chart-card.mini .chart-legend .lg { font-size: 11px; padding: 4px 8px; }
+.chart-card.mini .chart-legend .sw { width: 18px; height: 3px; }
+/* Hover-on-legend interactivity for mini-charts */
+.sp-line { transition: opacity .2s, stroke-width .2s; }
+.sp-line.dim { opacity: 0.15; }
+.sp-line.boost { stroke-width: 3.4; }
+
+/* ── Back-to-top button (added) ── */
+.back-to-top {
+  position: fixed;
+  bottom: 28px; right: 28px;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--lcu-navy);
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 22px rgba(12,46,78,0.28);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s, background .15s, transform .15s;
+  z-index: 60;
+}
+.back-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+.back-to-top:hover {
+  background: var(--lcu-accent);
+  transform: translateY(-2px);
+}
+.back-to-top svg { width: 18px; height: 18px; }
+
+/* ── Color unification (added) ── */
+/* Use a single brand orange for accents/eyebrows/datavis hardcoded yellows */
+.hero-stats .delta.up { color: var(--lcu-accent-300); }
+.hero-stats .delta.dn { color: var(--pos); }
+.feature .grid .cell .val.neg { color: var(--neg); }
+
+/* Destacado "val" default color was inline yellow → use white (parent context is dark navy) */
+.feature .grid .cell .val { color: #fff; }
+
+/* ── Pos/Neg coloring helpers for tables (added) ── */
+.num.pos { color: var(--pos); font-weight: 700; }
+.num.neg { color: var(--neg); font-weight: 700; }
+
 </style>
 </head>
 <body>
@@ -894,14 +1218,14 @@ a { color: inherit; text-decoration: none; }
       <a href="#panorama">Panorama Semanal</a>
       <a href="#tesoro">Bonos del Tesoro</a>
       <a href="#credito">Crédito</a>
-      <a href="#spreads">Spreads</a>
+      <a href="#spreads">Diferencial</a>
       <a href="#flujos">Flujos</a>
       <a href="#emisiones">Emisiones</a>
       <a href="#seleccion">Top 5 / Worst 5</a>
       <a href="#destacado">Destacado</a>
       <a href="#reportes">Reportes</a>
     </div>
-    <div class="date">11 · mayo · 2026</div>
+    <div class="date">25 · mayo · 2026</div>
   </div>
 </nav>
 
@@ -909,13 +1233,14 @@ a { color: inherit; text-decoration: none; }
 <header class="hero">
   <div class="hero-inner">
     <div class="hero-lhs">
-      <div class="eyebrow">Renta Fija Semanal · Edición 11 de mayo</div>
-      <h1>Resiliencia <strong>americana</strong>, moderación <strong>europea</strong>.</h1>
+      <div class="eyebrow">Renta Fija Semanal · Edición 25 de mayo</div>
+      <h1>Diplomacia <strong>geopolítica</strong>, compresión en <strong>diferenciales</strong>.</h1>
       <div class="hero-rule"></div>
       <p class="subtitle">
-        La semana dejó un panorama global marcado por la fortaleza del mercado laboral en Estados Unidos,
-        una desaceleración en Europa y señales mixtas en Asia, en un contexto de mayor tensión geopolítica
-        en Medio Oriente y volatilidad en los mercados energéticos.
+        Semana marcada por las negociaciones entre Washington y Teherán, la asunción de Kevin Warsh al
+        frente de la Reserva Federal y un cuadro de actividad mixto en Estados Unidos. La renta fija
+        cerró con retornos moderadamente positivos: compresión generalizada de diferenciales de
+        crédito y leve caída de rendimientos en la parte intermedia y larga de la curva del Tesoro.
       </p>
     </div>
 
@@ -923,40 +1248,40 @@ a { color: inherit; text-decoration: none; }
       <div class="hero-stats">
         <div class="item">
           <div class="lab">UST 2Y</div>
-          <div class="val">4,07<span class="u">%</span></div>
-          <div class="delta up">+19,2 pb sem · +35,4 pb YTD</div>
+          <div class="val">4,12<span class="u">%</span></div>
+          <div class="delta pos">+5,1 pb sem · +40,5 pb YTD</div>
         </div>
         <div class="item">
           <div class="lab">UST 10Y</div>
-          <div class="val">4,59<span class="u">%</span></div>
-          <div class="delta up">+22,3 pb sem · +31,6 pb YTD</div>
+          <div class="val">4,56<span class="u">%</span></div>
+          <div class="delta neg">−3,5 pb sem · +28,1 pb YTD</div>
         </div>
         <div class="item">
           <div class="lab">IG · OAS</div>
-          <div class="val">74<span class="u">pb</span></div>
-          <div class="delta dn">−1,8 pb sem · ret. −0,52%</div>
+          <div class="val">72<span class="u">pb</span></div>
+          <div class="delta dn">−1 pb sem · ret. +0,32%</div>
         </div>
         <div class="item">
           <div class="lab">HY · OAS</div>
-          <div class="val">272<span class="u">pb</span></div>
-          <div class="delta up">+8,7 pb sem · ret. −0,35%</div>
+          <div class="val">260<span class="u">pb</span></div>
+          <div class="delta dn">−7 pb sem · ret. +0,29%</div>
         </div>
       </div>
 
       <div class="hero-meta">
         <div class="blk">
           <div class="lab">Curva 2s10s</div>
-          <div class="val">+52 pb</div>
+          <div class="val">+44 pb</div>
         </div>
         <div class="blk">
           <div class="lab">Curva 3m–30y</div>
-          <div class="val">+144 pb</div>
+          <div class="val">+140 pb</div>
         </div>
         <div class="blk">
           <div class="lab">EM USD Aggregate</div>
-          <div class="val">6,18% · 170 pb</div>
+          <div class="val">6,17% · 169 pb</div>
         </div>
-        <p class="disc">Curva al 15/05/2026 · Índices al 11/05/2026 · Flujos al 19/05/2026.</p>
+        <p class="disc">Curva al 22/05/2026 · Índices al 22/05/2026 · Flujos al 22/05/2026.</p>
       </div>
     </div>
   </div>
@@ -967,76 +1292,77 @@ a { color: inherit; text-decoration: none; }
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">Panorama Semanal</div>
-      <h2>Tres velocidades en la <strong>economía global</strong>.</h2>
+      <h2>Geopolítica, <strong>Fed renovada</strong> y datos mixtos.</h2>
       <div class="accent-rule"></div>
       <p class="lede">
-        Estados Unidos sostiene el liderazgo, con un mercado laboral más resiliente de lo esperado y una temporada
-        de resultados excepcional. Europa muestra señales de desaceleración con el PMI compuesto en zona contractiva,
-        mientras que <strong>China sorprende con avances</strong> en sus indicadores de actividad.
+        Las negociaciones entre <strong>Washington y Teherán</strong> dominaron la agenda energética, mientras la
+        asunción de <strong>Kevin Warsh</strong> al frente de la Fed marcó un cambio de tono en la política monetaria.
+        En Europa la actividad se mantiene débil, mientras Asia muestra dos velocidades con Japón sorprendiendo
+        positivamente y China desacelerando.
       </p>
     </div>
 
     <div class="regions">
       <article class="region">
         <div class="flag">Estados Unidos</div>
-        <h3>Empleo sólido, Fed prudente</h3>
-        <p class="lead">Nóminas +115.000 · Desempleo 4,3% · Inflación bajo vigilancia</p>
+        <h3>Warsh asume la Fed, datos mixtos</h3>
+        <p class="lead">PMI manuf. 55,3 · Michigan 44,8 · Resultados S&amp;P +27,5% i.a.</p>
         <p>
-          El informe de empleo de abril sorprendió positivamente con la creación de 115.000 puestos, muy por
-          encima de lo esperado, mientras los salarios mostraron una desaceleración que refuerza la percepción
-          de un mercado laboral aún sólido pero con menores presiones inflacionarias.
+          La asunción de <strong>Kevin Warsh</strong> como presidente de la Fed se interpreta como el inicio de
+          una etapa con sesgo más restrictivo frente a la inflación, mensaje reforzado por declaraciones de
+          funcionarios señalando que las tasas podrían permanecer elevadas por un período prolongado.
         </p>
         <p>
-          La Fed mantuvo un tono prudente y descartó por ahora nuevas subas, aunque advirtió que la persistencia
-          de la inflación podría postergar futuros recortes. La temporada de resultados (88% del S&amp;P 500 reportado)
-          mostró utilidades +25,3% i.a. y ventas +10,4%.
+          La actividad mostró un cuadro heterogéneo: el PMI manufacturero trepó a 55,3 puntos (máximo desde
+          2022), pero la confianza del consumidor de Michigan cayó a un mínimo histórico de 44,8. Con el 94%
+          del S&amp;P 500 reportado, el 82,2% superó estimaciones y las utilidades crecieron 27,5% i.a.
         </p>
         <div class="pill-row">
-          <span class="pill pos">Empleo</span>
-          <span class="pill pos">Earnings +25,3%</span>
-          <span class="pill neu">Confianza</span>
+          <span class="pill pos">Resultados +27,5%</span>
+          <span class="pill neu">PMI máx. 2022</span>
+          <span class="pill neg">Confianza mínima</span>
         </div>
       </article>
 
       <article class="region">
         <div class="flag">Europa</div>
-        <h3>Desaceleración en servicios</h3>
-        <p class="lead">PMI compuesto contractivo · Manufactura en máximos de 4 años</p>
+        <h3>PMI contractivo, UK modera</h3>
+        <p class="lead">PMI compuesto 47,5 · UK CPI 2,8% · UK desempleo 5%</p>
         <p>
-          Las ventas minoristas de la Eurozona retrocedieron y el PMI compuesto cayó nuevamente a zona contractiva,
-          reflejando un debilitamiento del sector servicios ante el aumento de los costos energéticos y la
-          incertidumbre geopolítica.
+          El PMI compuesto de la eurozona retrocedió a 47,5 puntos, manteniéndose en zona contractiva por el
+          deterioro del sector servicios. La Comisión Europea recortó sus proyecciones de crecimiento para 2026
+          y elevó las estimaciones de inflación.
         </p>
         <p>
-          Aun así, el sector manufacturero alcanzó su mejor nivel en casi cuatro años y la temporada de resultados
-          del STOXX 600 mostró un crecimiento de beneficios del 8%, liderado por energía, financiero y telecomunicaciones.
-          En UK, el mercado inmobiliario perdió dinamismo.
+          En el Reino Unido, la inflación descendió a 2,8% en abril, el desempleo alcanzó el 5% y las ventas
+          minoristas retrocedieron 1,3% mensual, reduciendo las expectativas de nuevas alzas de tasas por parte
+          del Banco de Inglaterra.
         </p>
         <div class="pill-row">
-          <span class="pill neg">PMI Servicios</span>
-          <span class="pill pos">Manufactura</span>
-          <span class="pill pos">STOXX +8%</span>
+          <span class="pill neg">PMI 47,5</span>
+          <span class="pill neg">UK retail −1,3%</span>
+          <span class="pill neu">BoE pausa</span>
         </div>
       </article>
 
       <article class="region">
         <div class="flag">Asia</div>
-        <h3>Japón modera, China repunta</h3>
-        <p class="lead">PMI China en expansión · Salarios japoneses moderan</p>
+        <h3>Japón sorprende, China desacelera</h3>
+        <p class="lead">Japón PIB +2,1% i.a. · Exportaciones +14,8% · China gasto fiscal +1,3%</p>
         <p>
-          Japón evidenció una desaceleración moderada, con un menor ritmo de expansión del sector privado
-          y una moderación en el crecimiento salarial, mientras que China mostró una mejora en sus
-          indicadores de actividad.
+          Japón sorprendió positivamente con un crecimiento del 2,1% interanual en el primer trimestre, apoyado
+          en exportaciones que avanzaron 14,8% anual. La fortaleza del sector externo compensó debilidades
+          puntuales del consumo doméstico.
         </p>
         <p>
-          Tanto el PMI compuesto como el de servicios chinos registraron avances, sugiriendo una recuperación
-          gradual y mayor estabilidad en los sectores manufacturero y de consumo. La región refuerza el escenario
-          de crecimiento global heterogéneo.
+          China, en cambio, registró una desaceleración más pronunciada de lo esperado en consumo, producción
+          industrial e inversión inmobiliaria, lo que llevó al gobierno a acelerar el gasto fiscal con un
+          incremento del 1,3% interanual en el primer cuatrimestre.
         </p>
         <div class="pill-row">
-          <span class="pill neu">Japón sector privado</span>
-          <span class="pill pos">PMI China</span>
-          <span class="pill pos">Consumo</span>
+          <span class="pill pos">Japón PIB +2,1%</span>
+          <span class="pill neg">China consumo</span>
+          <span class="pill neu">Gasto fiscal +1,3%</span>
         </div>
       </article>
     </div>
@@ -1048,40 +1374,41 @@ a { color: inherit; text-decoration: none; }
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">Bonos del Tesoro</div>
-      <h2>Repunte de yields a lo <strong>largo de la curva</strong>.</h2>
+      <h2>Repliegue en <strong>tasas largas</strong>, parte intermedia comprimida.</h2>
       <div class="accent-rule"></div>
       <p class="lede">
-        Los acontecimientos en Oriente Medio continuaron dominando el sentimiento de los inversores y persiste
-        la incertidumbre sobre la rapidez con que Estados Unidos e Irán podrán llegar a un acuerdo para
-        poner fin al conflicto. La curva mostró un repunte generalizado, con la parte intermedia liderando el
-        ajuste alcista.
+        Los bonos del Tesoro estadounidense registraron retornos positivos en una semana de movimientos
+        marcados. Al inicio, las tasas repuntaron en la mayoría de los vencimientos, pero revirtieron su
+        tendencia el miércoles tras declaraciones del presidente Trump sobre las <em>“etapas finales”</em>
+        de las conversaciones con Irán. El 10Y, que había cerrado la semana previa cerca del 4,6%,
+        alcanzó un máximo de 4,69% a mitad de semana antes de retroceder hacia 4,56% el viernes.
       </p>
     </div>
 
     <div class="tsy-strip">
       <div class="cell">
         <div class="lab">UST 2 años</div>
-        <div class="num">4,07<span class="unit">%</span></div>
-        <div class="delta up">+19,2 pb semana</div>
-        <div class="sub">+35,4 pb vs. 31/12/25</div>
+        <div class="num">4,12<span class="unit">%</span></div>
+        <div class="delta pos">+5,1 pb semana</div>
+        <div class="sub">+40,5 pb vs. 31/12/25</div>
       </div>
       <div class="cell">
         <div class="lab">UST 5 años</div>
         <div class="num">4,26<span class="unit">%</span></div>
-        <div class="delta up">+24,4 pb semana</div>
-        <div class="sub">+40,0 pb vs. 31/12/25</div>
+        <div class="delta neg">−0,1 pb semana</div>
+        <div class="sub">+39,9 pb vs. 31/12/25</div>
       </div>
       <div class="cell">
         <div class="lab">UST 10 años</div>
-        <div class="num">4,59<span class="unit">%</span></div>
-        <div class="delta up">+22,3 pb semana</div>
-        <div class="sub">+31,6 pb vs. 31/12/25</div>
+        <div class="num">4,56<span class="unit">%</span></div>
+        <div class="delta neg">−3,5 pb semana</div>
+        <div class="sub">+28,1 pb vs. 31/12/25</div>
       </div>
       <div class="cell">
         <div class="lab">UST 30 años</div>
-        <div class="num">5,12<span class="unit">%</span></div>
-        <div class="delta up">+15,7 pb semana</div>
-        <div class="sub">+21,2 pb vs. 31/12/25</div>
+        <div class="num">5,07<span class="unit">%</span></div>
+        <div class="delta neg">−5,3 pb semana</div>
+        <div class="sub">+16,0 pb vs. 31/12/25</div>
       </div>
     </div>
 
@@ -1089,17 +1416,16 @@ a { color: inherit; text-decoration: none; }
       <div class="chart-head">
         <div>
           <div class="title">Curva de Tesoros — evolución</div>
-          <div class="sub">Yield % · Datos al 15/05/2026 · Pasá el mouse sobre los puntos o las series</div>
+          <div class="sub">Yield % · Datos al 22/05/2026 · Pasá el mouse sobre los puntos o las series</div>
         </div>
         <div class="chart-legend" id="curve-legend">
           <span class="lg" data-series="ytd"><span class="sw" style="background: #aab3c0;"></span>Yield 31/12/25</span>
           <span class="lg" data-series="wk"><span class="sw" style="background: #ecae7e;"></span>1 semana atrás</span>
-          <span class="lg" data-series="curr"><span class="sw" style="background: #0c2e4e;"></span>Actual (15/05)</span>
+          <span class="lg" data-series="curr"><span class="sw" style="background: #0c2e4e;"></span>Actual (22/05)</span>
         </div>
       </div>
 
       <svg id="curve-svg" class="chart-svg" viewBox="0 0 900 360" preserveAspectRatio="xMidYMid meet">
-        <!-- y axis grid -->
         <g stroke="#eef1f5" stroke-width="1">
           <line x1="60" y1="40"  x2="880" y2="40"/>
           <line x1="60" y1="100" x2="880" y2="100"/>
@@ -1115,13 +1441,45 @@ a { color: inherit; text-decoration: none; }
           <text x="50" y="224" text-anchor="end">4,00</text>
           <text x="50" y="284" text-anchor="end">3,50</text>
         </g>
-
-        <!-- Drawn by JS: lines + points + x-axis labels -->
         <g id="curve-lines"></g>
         <g id="curve-points"></g>
         <g id="curve-xlabels" font-family="Open Sans" font-size="11" fill="#6b7785" font-weight="600" text-anchor="middle"></g>
       </svg>
       <div class="chart-tooltip" id="curve-tooltip"></div>
+
+      <div class="curve-table-wrap">
+        <div class="curve-table-head">
+          <div class="t">Tabla completa por tenor</div>
+          <div class="s">Yields y variaciones (puntos básicos)</div>
+        </div>
+        <table class="curve-table">
+          <thead>
+            <tr>
+              <th>Tenor</th>
+              <th class="num">Yield 31/12/25</th>
+              <th class="num">1 sem atrás</th>
+              <th class="num">Actual</th>
+              <th class="num">Var. 1 sem</th>
+              <th class="num">Var. YTD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="tn">1M</td><td class="num">3,69%</td><td class="num">3,64%</td><td class="num curr">3,67%</td><td class="num bps pos">+3,1 pb</td><td class="num bps neg">−2,2 pb</td></tr>
+<tr><td class="tn">2M</td><td class="num">3,68%</td><td class="num">3,66%</td><td class="num curr">3,67%</td><td class="num bps pos">+0,8 pb</td><td class="num bps neg">−0,7 pb</td></tr>
+<tr><td class="tn">3M</td><td class="num">3,69%</td><td class="num">3,67%</td><td class="num curr">3,67%</td><td class="num bps neg">−0,5 pb</td><td class="num bps neg">−1,8 pb</td></tr>
+<tr><td class="tn">4M</td><td class="num">3,69%</td><td class="num">3,70%</td><td class="num curr">3,72%</td><td class="num bps pos">+1,9 pb</td><td class="num bps pos">+2,4 pb</td></tr>
+<tr><td class="tn">6M</td><td class="num">3,66%</td><td class="num">3,73%</td><td class="num curr">3,75%</td><td class="num bps pos">+2,4 pb</td><td class="num bps pos">+9,1 pb</td></tr>
+<tr><td class="tn">1Y</td><td class="num">3,63%</td><td class="num">3,81%</td><td class="num curr">3,84%</td><td class="num bps pos">+3,5 pb</td><td class="num bps pos">+20,8 pb</td></tr>
+<tr><td class="tn">2Y</td><td class="num">3,72%</td><td class="num">4,07%</td><td class="num curr">4,12%</td><td class="num bps pos">+5,1 pb</td><td class="num bps pos">+40,5 pb</td></tr>
+<tr><td class="tn">3Y</td><td class="num">3,74%</td><td class="num">4,14%</td><td class="num curr">4,17%</td><td class="num bps pos">+3,3 pb</td><td class="num bps pos">+43,5 pb</td></tr>
+<tr><td class="tn">5Y</td><td class="num">3,86%</td><td class="num">4,26%</td><td class="num curr">4,26%</td><td class="num bps neg">−0,1 pb</td><td class="num bps pos">+39,9 pb</td></tr>
+<tr><td class="tn">7Y</td><td class="num">4,05%</td><td class="num">4,43%</td><td class="num curr">4,40%</td><td class="num bps neg">−2,4 pb</td><td class="num bps pos">+34,7 pb</td></tr>
+<tr><td class="tn">10Y</td><td class="num">4,28%</td><td class="num">4,59%</td><td class="num curr">4,56%</td><td class="num bps neg">−3,5 pb</td><td class="num bps pos">+28,1 pb</td></tr>
+<tr><td class="tn">20Y</td><td class="num">4,89%</td><td class="num">5,14%</td><td class="num curr">5,07%</td><td class="num bps neg">−6,2 pb</td><td class="num bps pos">+18,2 pb</td></tr>
+<tr><td class="tn">30Y</td><td class="num">4,91%</td><td class="num">5,12%</td><td class="num curr">5,07%</td><td class="num bps neg">−5,3 pb</td><td class="num bps pos">+16,0 pb</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </section>
@@ -1131,12 +1489,13 @@ a { color: inherit; text-decoration: none; }
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">Crédito</div>
-      <h2>Retornos negativos por <strong>repunte de yields</strong>.</h2>
+      <h2>Retornos positivos y <strong>compresión generalizada</strong>.</h2>
       <div class="accent-rule"></div>
       <p class="lede">
-        La fuerte suba de las tasas largas dominó la performance semanal. El segmento de mayor calidad (US Treasuries
-        e Investment Grade) fue el más afectado por su sensibilidad a duración, mientras que <em>High Yield</em>
-        amortiguó parcialmente la caída gracias al menor componente de tasa.
+        La renta fija tuvo una semana de retornos moderadamente positivos, con compresión generalizada de
+        diferenciales y leve caída de rendimientos. El <em>High Yield</em> estadounidense lideró el retorno
+        acumulado en el año mientras el Investment Grade sigue en terreno negativo en el YTD a pesar del
+        avance semanal.
       </p>
     </div>
 
@@ -1147,26 +1506,25 @@ a { color: inherit; text-decoration: none; }
             <div class="tag">Investment Grade · EE.UU.</div>
             <h3>US Corporate</h3>
           </div>
-          <div class="ret-badge neg">
+          <div class="ret-badge pos">
             <span class="ret-label">Retorno 1w</span>
-            −0,52%
+            +0,32%
           </div>
         </div>
         <div class="metrics">
           <div class="metric">
-            <div class="mlab">OAS Spread</div>
-            <div class="mval">74,2<span class="unit">pb</span></div>
-            <div class="mdelta dn">−1,8 pb sem · −2,4%</div>
+            <div class="mlab">Diferencial OAS</div>
+            <div class="mval">72,4<span class="unit">pb</span></div>
+            <div class="mdelta dn">−1 pb sem</div>
           </div>
           <div class="metric">
             <div class="mlab">Yield to Worst</div>
-            <div class="mval">5,28<span class="unit">%</span></div>
-            <div class="mdelta up">+14,1 pb sem</div>
+            <div class="mval">5,26<span class="unit">%</span></div>
+            <div class="mdelta neg">−1,3 pb sem</div>
           </div>
         </div>
         <p>
-          Duración del índice 6,89 años. Calificación promedio A3/Baa1. Retorno YTD acumulado <strong>+5,34%</strong>
-          a pesar de la pérdida semanal. La compresión de <em>spreads</em> compensó parcialmente la suba de tasas.
+          Duración del índice 6,90 años · calificación promedio A3/Baa1 · vencimiento 10,45 años. Retorno YTD acumulado <strong>−0,29%</strong> a pesar del avance semanal: la compresión del diferencial compensó la sensibilidad a duración en una semana con tasas largas en leve baja.
         </p>
       </article>
 
@@ -1174,57 +1532,55 @@ a { color: inherit; text-decoration: none; }
         <div class="top">
           <div>
             <div class="tag">High Yield · EE.UU.</div>
-            <h3>US Corporate HY</h3>
+            <h3>US Corporate High Yield</h3>
           </div>
-          <div class="ret-badge neg">
+          <div class="ret-badge pos">
             <span class="ret-label">Retorno 1w</span>
-            −0,35%
+            +0,29%
           </div>
         </div>
         <div class="metrics">
           <div class="metric">
-            <div class="mlab">OAS Spread</div>
-            <div class="mval">272,5<span class="unit">pb</span></div>
-            <div class="mdelta up">+8,7 pb sem · +3,3%</div>
+            <div class="mlab">Diferencial OAS</div>
+            <div class="mval">260,5<span class="unit">pb</span></div>
+            <div class="mdelta dn">−1 pb sem</div>
           </div>
           <div class="metric">
             <div class="mlab">Yield to Worst</div>
-            <div class="mval">7,22<span class="unit">%</span></div>
-            <div class="mdelta up">+24,0 pb sem</div>
+            <div class="mval">7,12<span class="unit">%</span></div>
+            <div class="mdelta neg">−5,0 pb sem</div>
           </div>
         </div>
         <p>
-          Duración 3,32 años · Ba3/B1. Dentro del HY, Ba (−0,30%) fue el más resistente y Caa (−0,53%) el más afectado.
-          YTD <strong>+6,97%</strong>. <em>Spreads</em> ampliando moderadamente, sin señales de stress.
+          Duración 3,28 años · calificación promedio Ba3/B1 · vencimiento 4,80 años. YTD <strong>+1,13%</strong>. El segmento siguió liderando los retornos acumulados del año gracias a su menor componente de tasa y a la compresión continua del diferencial.
         </p>
       </article>
 
       <article class="credit-card">
         <div class="top">
           <div>
-            <div class="tag">Emerging Markets · USD</div>
+            <div class="tag">Emergentes · USD</div>
             <h3>EM USD Aggregate</h3>
           </div>
-          <div class="ret-badge neg">
+          <div class="ret-badge pos">
             <span class="ret-label">Retorno 1w</span>
-            −0,78%
+            +0,19%
           </div>
         </div>
         <div class="metrics">
           <div class="metric">
-            <div class="mlab">OAS Spread</div>
-            <div class="mval">170,1<span class="unit">pb</span></div>
-            <div class="mdelta up">+4,2 pb sem · +2,5%</div>
+            <div class="mlab">Diferencial OAS</div>
+            <div class="mval">169,3<span class="unit">pb</span></div>
+            <div class="mdelta dn">−1 pb sem</div>
           </div>
           <div class="metric">
             <div class="mlab">Yield to Worst</div>
-            <div class="mval">6,18<span class="unit">%</span></div>
-            <div class="mdelta up">+19,9 pb sem</div>
+            <div class="mval">6,17<span class="unit">%</span></div>
+            <div class="mdelta pos">+2,5 pb sem</div>
           </div>
         </div>
         <p>
-          EM USD LATAM con −0,93% semanal (YTW 6,88% · OAS 227 pb). EM HY entregó +12,54% YTD, liderando el bloque.
-          Duración 6,01 años · Baa2/Baa3.
+          Duración 6,02 años · calificación promedio Baa2/Baa3 · vencimiento 9,56 años. YTD <strong>+0,36%</strong>. Diferencial estable con leve ampliación semanal de 3 pb, mientras el segmento mantiene un perfil técnico sólido frente a tasas globales todavía elevadas.
         </p>
       </article>
     </div>
@@ -1242,38 +1598,76 @@ a { color: inherit; text-decoration: none; }
 <section class="section alt" id="spreads">
   <div class="container">
     <div class="section-head">
-      <div class="eyebrow">Spreads · Histórico</div>
-      <h2>Evolución de los <strong>spreads de crédito</strong>.</h2>
+      <div class="eyebrow">Diferencial · Histórico</div>
+      <h2>Evolución de <strong>diferenciales</strong> y rendimientos.</h2>
       <div class="accent-rule"></div>
       <p class="lede">
-        Histórico semanal de <em>spreads</em> Option-Adjusted en cuatro segmentos clave: US Investment Grade, US High
-        Yield, EM USD Aggregate y EM USD LATAM. Pasá el mouse sobre cada serie en la leyenda para destacarla, o sobre
-        los puntos para ver el valor exacto.
+        Histórico semanal de los diferenciales Option-Adjusted y los rendimientos asociados, en cuatro
+        segmentos clave: US Investment Grade, US High Yield, EM USD Aggregate y EM USD LATAM. Cada panel
+        cruza ambas series para mostrar simultáneamente la prima de crédito y el yield total del segmento.
       </p>
     </div>
 
-    <div class="chart-card" id="spreads-card">
-      <div class="chart-head">
-        <div>
-          <div class="title">OAS Spread — evolución semanal</div>
-          <div class="sub">Puntos básicos · Últimas <span id="spreads-count">126</span> semanas</div>
+    <div class="spreads-grid">
+      <div class="chart-card mini" id="sp-card-us_ig">
+        <div class="chart-head">
+          <div>
+            <div class="title">US Investment Grade</div>
+            <div class="sub">OAS pb · Yield %</div>
+          </div>
+          <div class="chart-legend">
+            <span class="lg"><span class="sw" style="background: #d98326;"></span>Diferencial (pb)</span>
+            <span class="lg"><span class="sw" style="background: #0c2e4e;"></span>Yield (%)</span>
+          </div>
         </div>
-        <div class="chart-legend" id="spreads-legend">
-          <span class="lg" data-series="us_ig"><span class="sw" style="background: #0c2e4e;"></span>US IG Corp</span>
-          <span class="lg" data-series="us_hy"><span class="sw" style="background: #d98326;"></span>US HY Corp</span>
-          <span class="lg" data-series="em_usd"><span class="sw" style="background: #51a97f;"></span>USD EM Debt</span>
-          <span class="lg" data-series="em_latam"><span class="sw" style="background: #c43e3d;"></span>USD LATAM</span>
-        </div>
+        <svg id="sp-svg-us_ig" class="chart-svg mini-svg" viewBox="0 0 600 280" preserveAspectRatio="xMidYMid meet"></svg>
+        <div class="chart-tooltip" id="sp-tt-us_ig"></div>
       </div>
 
-      <svg id="spreads-svg" class="chart-svg" viewBox="0 0 1100 380" preserveAspectRatio="xMidYMid meet">
-        <g id="spreads-yaxis"></g>
-        <g id="spreads-xaxis"></g>
-        <g id="spreads-grid"></g>
-        <g id="spreads-lines"></g>
-        <g id="spreads-points"></g>
-      </svg>
-      <div class="chart-tooltip" id="spreads-tooltip"></div>
+      <div class="chart-card mini" id="sp-card-us_hy">
+        <div class="chart-head">
+          <div>
+            <div class="title">US High Yield</div>
+            <div class="sub">OAS pb · Yield %</div>
+          </div>
+          <div class="chart-legend">
+            <span class="lg"><span class="sw" style="background: #d98326;"></span>Diferencial (pb)</span>
+            <span class="lg"><span class="sw" style="background: #0c2e4e;"></span>Yield (%)</span>
+          </div>
+        </div>
+        <svg id="sp-svg-us_hy" class="chart-svg mini-svg" viewBox="0 0 600 280" preserveAspectRatio="xMidYMid meet"></svg>
+        <div class="chart-tooltip" id="sp-tt-us_hy"></div>
+      </div>
+
+      <div class="chart-card mini" id="sp-card-em_usd">
+        <div class="chart-head">
+          <div>
+            <div class="title">EM USD Aggregate</div>
+            <div class="sub">OAS pb · Yield %</div>
+          </div>
+          <div class="chart-legend">
+            <span class="lg"><span class="sw" style="background: #d98326;"></span>Diferencial (pb)</span>
+            <span class="lg"><span class="sw" style="background: #0c2e4e;"></span>Yield (%)</span>
+          </div>
+        </div>
+        <svg id="sp-svg-em_usd" class="chart-svg mini-svg" viewBox="0 0 600 280" preserveAspectRatio="xMidYMid meet"></svg>
+        <div class="chart-tooltip" id="sp-tt-em_usd"></div>
+      </div>
+
+      <div class="chart-card mini" id="sp-card-em_latam">
+        <div class="chart-head">
+          <div>
+            <div class="title">EM USD LATAM</div>
+            <div class="sub">OAS pb · Yield %</div>
+          </div>
+          <div class="chart-legend">
+            <span class="lg"><span class="sw" style="background: #d98326;"></span>Diferencial (pb)</span>
+            <span class="lg"><span class="sw" style="background: #0c2e4e;"></span>Yield (%)</span>
+          </div>
+        </div>
+        <svg id="sp-svg-em_latam" class="chart-svg mini-svg" viewBox="0 0 600 280" preserveAspectRatio="xMidYMid meet"></svg>
+        <div class="chart-tooltip" id="sp-tt-em_latam"></div>
+      </div>
     </div>
   </div>
 </section>
@@ -1283,109 +1677,91 @@ a { color: inherit; text-decoration: none; }
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">Flujos · ETFs</div>
-      <h2>Preferencia por <strong>duración</strong> y <strong>Tesoros</strong>.</h2>
+      <h2>Preferencia por <strong>calidad</strong> y duración.</h2>
       <div class="accent-rule"></div>
       <p class="lede">
-        Durante la última semana, los flujos en renta fija mostraron una preferencia clara por los segmentos
-        de mayor duración —liderados por TLT con +2,60% de variación AUM— y por Tesoros de todos los plazos.
-        En contraste, las principales salidas se concentraron en bonos corporativos Investment Grade (LQD)
-        y High Yield (HYG).
+        Los flujos en renta fija mostraron un comportamiento mixto, con entradas concentradas en segmentos
+        de <strong>calidad</strong> y <strong>duración</strong>. Las mayores entradas se registraron en bonos corporativos
+        grado inversor (LQD, +3,8%), seguidos por Tesoros (GOVT, IEF, ambos +0,7%). Las salidas más significativas se
+        dieron en High Yield (HYG, −1,8%) y bonos del Tesoro de largo plazo (TLT, −0,3%). En el horizonte de un año,
+        los flujos confirman la preferencia estructural por activos de alta calidad crediticia: GOVT +48,2%, IEF +34,2% y
+        IAGG +33,5%, frente a salidas en Senior Loans (−28,4%), TLT (−18,2%) y LQD (−9,2%).
       </p>
     </div>
 
     <div class="flows-wrap">
-      <!-- Inflows -->
       <div class="flows-card in">
         <div class="head">
           <div>
             <div class="ttl">Mayores ingresos</div>
-            <div class="sub" style="margin-top:3px;">Variación semanal AUM · positiva</div>
+            <div class="sub" style="margin-top:3px;">Var. semanal AUM · positiva</div>
           </div>
         </div>
-
         <div class="flow-rows">
           <div class="flow-item">
             <div class="row1">
-              <div class="tk">TLT</div>
-              <div class="nm">iShares 20+ Yr Treasury Bond<span class="sub">Long Term UST · AUM 42.581 MM</span></div>
-              <div class="v pos">+2,60%</div>
+              <div class="tk">LQD</div>
+              <div class="nm">Ishr Ibx Usd Invgd Cb Etf-Ui<span class="sub">Investment Grade · AUM 29.259 MM</span></div>
+              <div class="v pos">+3,76%</div>
             </div>
             <div class="bar-track"><div class="bar-fill in" style="width: 100%;"></div></div>
           </div>
           <div class="flow-item">
             <div class="row1">
-              <div class="tk">GOVT</div>
-              <div class="nm">iShares US Treasury Bond ETF<span class="sub">UST aggregate · AUM 40.981 MM</span></div>
-              <div class="v pos">+0,73%</div>
+              <div class="tk">SHY</div>
+              <div class="nm">Ishares 1-3 Year Treasury Bo<span class="sub">Tesoro corto · AUM 25.277 MM</span></div>
+              <div class="v pos">+1,34%</div>
             </div>
-            <div class="bar-track"><div class="bar-fill in" style="width: 28%;"></div></div>
+            <div class="bar-track"><div class="bar-fill in" style="width: 36%;"></div></div>
           </div>
           <div class="flow-item">
             <div class="row1">
               <div class="tk">IEF</div>
-              <div class="nm">iShares 7-10 Yr Treasury<span class="sub">Intermediate UST · AUM 47.225 MM</span></div>
-              <div class="v pos">+0,73%</div>
+              <div class="nm">Ishares 7-10 Year Treasury B<span class="sub">Tesoro intermedio · AUM 47.774 MM</span></div>
+              <div class="v pos">+0,72%</div>
             </div>
-            <div class="bar-track"><div class="bar-fill in" style="width: 28%;"></div></div>
+            <div class="bar-track"><div class="bar-fill in" style="width: 19%;"></div></div>
           </div>
           <div class="flow-item">
             <div class="row1">
-              <div class="tk">TIP</div>
-              <div class="nm">iShares TIPS Bond ETF<span class="sub">TIPS · AUM 14.967 MM</span></div>
-              <div class="v pos">+0,64%</div>
+              <div class="tk">GOVT</div>
+              <div class="nm">Ishares Us Treasury Bond Etf<span class="sub">UST agregado · AUM 41.404 MM</span></div>
+              <div class="v pos">+0,68%</div>
             </div>
-            <div class="bar-track"><div class="bar-fill in" style="width: 25%;"></div></div>
+            <div class="bar-track"><div class="bar-fill in" style="width: 18%;"></div></div>
           </div>
           <div class="flow-item">
             <div class="row1">
-              <div class="tk">EMLC</div>
-              <div class="nm">VanEck JPM EM Local Curr Bnd<span class="sub">Emerging Local · AUM 4.808 MM</span></div>
-              <div class="v pos">+0,64%</div>
+              <div class="tk">SRLN</div>
+              <div class="nm">Ss Blackstone Sr Loan Etf<span class="sub">Senior Loans · AUM 5.255 MM</span></div>
+              <div class="v pos">+0,67%</div>
             </div>
-            <div class="bar-track"><div class="bar-fill in" style="width: 25%;"></div></div>
+            <div class="bar-track"><div class="bar-fill in" style="width: 18%;"></div></div>
           </div>
         </div>
       </div>
 
-      <!-- Outflows -->
       <div class="flows-card out">
         <div class="head">
           <div>
             <div class="ttl">Mayores salidas</div>
-            <div class="sub" style="margin-top:3px;">Variación semanal AUM · negativa</div>
+            <div class="sub" style="margin-top:3px;">Var. semanal AUM · negativa</div>
           </div>
         </div>
-
         <div class="flow-rows">
           <div class="flow-item">
             <div class="row1">
-              <div class="tk">LQD</div>
-              <div class="nm">iShr iBoxx USD IG CB ETF<span class="sub">Corporate IG · AUM 28.020 MM</span></div>
-              <div class="v neg">−3,05%</div>
+              <div class="tk">HYG</div>
+              <div class="nm">Ishr Ibx Usd Hiyld Cb Etf-Ui<span class="sub">High Yield · AUM 16.108 MM</span></div>
+              <div class="v neg">−1,84%</div>
             </div>
             <div class="bar-track"><div class="bar-fill out" style="width: 100%;"></div></div>
           </div>
           <div class="flow-item">
             <div class="row1">
-              <div class="tk">HYG</div>
-              <div class="nm">iShr iBoxx USD HY CB ETF<span class="sub">High Yield · AUM 16.333 MM</span></div>
-              <div class="v neg">−1,55%</div>
-            </div>
-            <div class="bar-track"><div class="bar-fill out" style="width: 51%;"></div></div>
-          </div>
-          <div class="flow-item">
-            <div class="row1">
-              <div class="tk">EMB</div>
-              <div class="nm">iShr JPM USD Emerging Mkts<span class="sub">EM USD · AUM 13.799 MM</span></div>
-              <div class="v neg">−0,63%</div>
-            </div>
-            <div class="bar-track"><div class="bar-fill out" style="width: 21%;"></div></div>
-          </div>
-          <div class="flow-item">
-            <div class="row1">
-              <div class="tk">SRLN</div>
-              <div class="nm">SS Blackstone SR Loan ETF<span class="sub">Senior Loans · AUM 5.226 MM</span></div>
-              <div class="v neg">−0,54%</div>
+              <div class="tk">TLT</div>
+              <div class="nm">Ishares 20+ Year Treasury Bd<span class="sub">Tesoro largo · AUM 43.009 MM</span></div>
+              <div class="v neg">−0,33%</div>
             </div>
             <div class="bar-track"><div class="bar-fill out" style="width: 18%;"></div></div>
           </div>
@@ -1407,11 +1783,12 @@ a { color: inherit; text-decoration: none; }
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">Nuevas Emisiones</div>
-      <h2>Pipeline <strong>activo</strong> en LATAM.</h2>
+      <h2>Semana <strong>tranquila</strong> en el mercado primario.</h2>
       <div class="accent-rule"></div>
       <p class="lede">
-        Semana con emisiones soberanas, sub-soberanas y corporativas, con foco en México, Argentina, Ecuador y Bolivia.
-        Cox Asset, Esentia Energy y Compañía General de Combustibles entre los emisores corporativos destacados.
+        El mercado primario de la región tuvo una semana inusualmente tranquila, con una sola colocación
+        relevante: <strong>Fibra Soma</strong> (México · Real Estate) emitió USD 800 millones a 10 años con un cupón
+        de 7,125% y un precio de reapertura cercano a la par.
       </p>
     </div>
 
@@ -1421,95 +1798,24 @@ a { color: inherit; text-decoration: none; }
           <tr>
             <th>País</th><th>Emisor</th><th>Emisión</th>
             <th class="num">Precio</th><th class="num">Cambio %</th>
-            <th class="num">YTM</th><th class="num">Dur.</th>
+            <th class="num">YTM</th><th class="num">Mod Dur</th>
             <th>Call</th><th>Sector</th>
             <th class="num">Amt (MM)</th><th class="num">Min</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><span class="country">PA</span></td>
-            <td class="iss">Panama Letras del Tesoro<span class="meta">0 · 7/5/2027</span></td>
-            <td>5/5/2026</td><td class="num">95,83</td><td class="num chg pos">+0,34%</td>
-            <td class="num">4,38</td><td class="num">0,95</td><td>—</td>
-            <td><span class="sec-tag">Sovereigns</span></td><td class="num">156</td><td class="num">1.000</td>
-          </tr>
-          <tr>
             <td><span class="country">MX</span></td>
-            <td class="iss">Cox Asset Mexico SA CV<span class="meta">7,125 · 8/1/2032</span></td>
-            <td>5/5/2026</td><td class="num">101,82</td><td class="num chg pos">+1,84%</td>
-            <td class="num">6,73</td><td class="num">4,55</td><td>8/12/2031</td>
-            <td><span class="sec-tag">Power Gen</span></td><td class="num">1.000</td><td class="num">200.000</td>
-          </tr>
-          <tr>
-            <td><span class="country">MX</span></td>
-            <td class="iss">Cox Asset Mexico SA CV<span class="meta">7,75 · 8/5/2036</span></td>
-            <td>5/5/2026</td><td class="num">101,92</td><td class="num chg pos">+1,92%</td>
-            <td class="num">7,47</td><td class="num">6,78</td><td>8/2/2036</td>
-            <td><span class="sec-tag">Power Gen</span></td><td class="num">1.000</td><td class="num">200.000</td>
-          </tr>
-          <tr>
-            <td><span class="country">AR</span></td>
-            <td class="iss">City of Buenos Aires<span class="meta">7,05 · 13/5/2036</span></td>
-            <td>6/5/2026</td><td class="num">97,79</td><td class="num chg neg">−0,11%</td>
-            <td class="num">7,37</td><td class="num">6,53</td><td>—</td>
-            <td><span class="sec-tag">Gov Local</span></td><td class="num">500</td><td class="num">1.000</td>
-          </tr>
-          <tr>
-            <td><span class="country">AR</span></td>
-            <td class="iss">Compañía General de Combust.<span class="meta">11,875 · 28/11/2034</span></td>
-            <td>6/5/2026</td><td class="num">102,89</td><td class="num chg pos">+0,24%</td>
-            <td class="num">11,04</td><td class="num">2,71</td><td>28/11/2027</td>
-            <td><span class="sec-tag">Energy E&amp;P</span></td><td class="num">200</td><td class="num">100</td>
-          </tr>
-          <tr>
-            <td><span class="country">EC</span></td>
-            <td class="iss">Republic of Ecuador<span class="meta">8,75 · 29/1/2034</span></td>
-            <td>6/5/2026</td><td class="num">102,57</td><td class="num chg pos">+0,01%</td>
-            <td class="num">8,30</td><td class="num">4,90</td><td>—</td>
-            <td><span class="sec-tag">Sovereigns</span></td><td class="num">500</td><td class="num">200.000</td>
-          </tr>
-          <tr>
-            <td><span class="country">EC</span></td>
-            <td class="iss">Republic of Ecuador<span class="meta">9,25 · 29/1/2039</span></td>
-            <td>6/5/2026</td><td class="num">103,67</td><td class="num chg pos">+0,08%</td>
-            <td class="num">8,76</td><td class="num">6,97</td><td>—</td>
-            <td><span class="sec-tag">Sovereigns</span></td><td class="num">500</td><td class="num">200.000</td>
-          </tr>
-          <tr>
-            <td><span class="country">MX</span></td>
-            <td class="iss">Banca Mifel SA<span class="meta">9,25 · 14/11/2174</span></td>
-            <td>7/5/2026</td><td class="num">100,66</td><td class="num chg pos">+0,66%</td>
-            <td class="num">9,18</td><td class="num">3,94</td><td>14/5/2031</td>
-            <td><span class="sec-tag">Banks</span></td><td class="num">300</td><td class="num">200.000</td>
-          </tr>
-          <tr>
-            <td><span class="country">MX</span></td>
-            <td class="iss">Banco Nacional Com Ext<span class="meta">6 · 14/5/2036</span></td>
-            <td>7/5/2026</td><td class="num">100,39</td><td class="num chg pos">+0,39%</td>
-            <td class="num">5,94</td><td class="num">4,27</td><td>14/5/2031</td>
-            <td><span class="sec-tag">Gov Dev Bank</span></td><td class="num">500</td><td class="num">200.000</td>
-          </tr>
-          <tr>
-            <td><span class="country">MX</span></td>
-            <td class="iss">Esentia Energy Dev SAB<span class="meta">6,5 · 30/7/2038</span></td>
-            <td>7/5/2026</td><td class="num">99,11</td><td class="num chg pos">+0,68%</td>
-            <td class="num">6,61</td><td class="num">8,31</td><td>30/4/2038</td>
-            <td><span class="sec-tag">Pipeline</span></td><td class="num">1.000</td><td class="num">200.000</td>
-          </tr>
-          <tr>
-            <td><span class="country">BO</span></td>
-            <td class="iss">Bolivia Government<span class="meta">9,45 · 14/5/2031</span></td>
-            <td>7/5/2026</td><td class="num">99,48</td><td class="num chg pos">+0,66%</td>
-            <td class="num">9,58</td><td class="num">3,91</td><td>14/4/2031</td>
-            <td><span class="sec-tag">Sovereigns</span></td><td class="num">1.000</td><td class="num">200.000</td>
-          </tr>
-          <tr>
-            <td><span class="country">MX</span></td>
-            <td class="iss">Esentia Energy Dev SAB<span class="meta">6,125 · 30/7/2033</span></td>
-            <td>7/5/2026</td><td class="num">99,96</td><td class="num chg pos">+0,45%</td>
-            <td class="num">6,13</td><td class="num">5,76</td><td>30/5/2033</td>
-            <td><span class="sec-tag">Pipeline</span></td><td class="num">1.000</td><td class="num">200.000</td>
+            <td class="iss">Fibra Soma Trust F/6185<span class="meta">7,125 · 28/05/2036</span></td>
+            <td>21/05/2026</td>
+            <td class="num">99,78</td>
+            <td class="num chg neg">−0,22%</td>
+            <td class="num">7,16</td>
+            <td class="num">7,06</td>
+            <td>28/02/2036</td>
+            <td><span class="sec-tag">Real Estate</span></td>
+            <td class="num">800</td>
+            <td class="num">200.000</td>
           </tr>
         </tbody>
       </table>
@@ -1522,46 +1828,46 @@ a { color: inherit; text-decoration: none; }
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">Top 5 / Worst 5</div>
-      <h2>Mejores y peores <strong>desempeños semanales</strong>.</h2>
+      <h2>Mejores y peores <strong>retornos semanales</strong>.</h2>
       <div class="accent-rule"></div>
       <p class="lede">
-        Los mejores desempeños semanales se concentraron en emisores corporativos de calidad media, mientras
-        que las peores variaciones se dieron en emisores corporativos LATAM con mayor sensibilidad a tasas
-        y a noticias idiosincráticas.
+        Los mejores retornos semanales se concentraron en <strong>soberanos LATAM</strong> y corporativos US de calidad
+        media. En el lado negativo, peso de emisores corporativos LATAM con mayor sensibilidad a tasas y
+        ruido idiosincrático — incluyendo a <strong>Petrobras</strong>, que ocupa el destacado de la edición.
       </p>
     </div>
 
     <div class="selection-grid">
       <div class="sel-card top">
         <div class="sel-head">
-          <div class="ttl">Top 5 · Mejores desempeños</div>
+          <div class="ttl">Top 5 · Mejores retornos</div>
           <div class="badge">1 semana</div>
         </div>
         <table class="sel-table">
           <thead><tr><th>CCY</th><th>País</th><th>Bono</th><th class="num">Precio</th><th class="num">YTM</th><th class="num">1w</th><th class="num">YTD</th></tr></thead>
           <tbody>
-            <tr><td>USD</td><td>CL</td><td class="bond-name">Sdad. Quím. y Min. de Chile<span class="rating">BBB / BBB+ / Baa1</span></td><td class="num">69,51</td><td class="num">5,84</td><td class="num ret pos">+0,70</td><td class="num">+3,34</td></tr>
-            <tr><td>USD</td><td>US</td><td class="bond-name">Wrkco Inc<span class="rating">BBB+ / BBB+ / Baa2</span></td><td class="num">96,41</td><td class="num">4,93</td><td class="num ret pos">+0,65</td><td class="num">+0,88</td></tr>
-            <tr><td>USD</td><td>DO</td><td class="bond-name">Dominican Republic (Gov.)<span class="rating">BB / BB / Baa2</span></td><td class="num">95,50</td><td class="num">5,82</td><td class="num ret pos">+0,64</td><td class="num">+1,51</td></tr>
-            <tr><td>USD</td><td>US</td><td class="bond-name">Ford Motor Co<span class="rating">BBB- / B / Ba1</span></td><td class="num">88,18</td><td class="num">5,76</td><td class="num ret pos">+0,54</td><td class="num">+0,20</td></tr>
-            <tr><td>USD</td><td>CA</td><td class="bond-name">Toronto-Dominion Bank<span class="rating">AA- / AA- / A2</span></td><td class="num">92,60</td><td class="num">4,72</td><td class="num ret pos">+0,53</td><td class="num">+0,78</td></tr>
+            <tr><td>USD</td><td>CO</td><td class="bond-name">Colombia, Republic Of (Government)<span class="rating">BB / BB / Baa3</span></td><td class="num">84,50</td><td class="num">6,51</td><td class="num ret pos">+0,55%</td><td class="num ret pos">+0,01%</td></tr>
+            <tr><td>USD</td><td>US</td><td class="bond-name">Marriott International Inc<span class="rating">NULL / BBB / Baa2</span></td><td class="num">99,37</td><td class="num">5,37</td><td class="num ret pos">+0,49%</td><td class="num ret neg">−2,14%</td></tr>
+            <tr><td>USD</td><td>CO</td><td class="bond-name">Ecopetrol Sa<span class="rating">BB / BB / Ba2</span></td><td class="num">90,12</td><td class="num">7,01</td><td class="num ret pos">+0,40%</td><td class="num ret neg">−0,07%</td></tr>
+            <tr><td>USD</td><td>US</td><td class="bond-name">Iron Mountain Information Management Services Inc<span class="rating">NULL / BB- / Ba3</span></td><td class="num">96,75</td><td class="num">5,83</td><td class="num ret pos">+0,38%</td><td class="num ret pos">+0,51%</td></tr>
+            <tr><td>USD</td><td>US</td><td class="bond-name">Targa Resources Corp<span class="rating">BBB / BBB / Baa2</span></td><td class="num">95,04</td><td class="num">5,15</td><td class="num ret pos">+0,36%</td><td class="num ret neg">−1,06%</td></tr>
           </tbody>
         </table>
       </div>
 
       <div class="sel-card bot">
         <div class="sel-head">
-          <div class="ttl">Worst 5 · Peores desempeños</div>
+          <div class="ttl">Worst 5 · Peores retornos</div>
           <div class="badge">1 semana</div>
         </div>
         <table class="sel-table">
           <thead><tr><th>CCY</th><th>País</th><th>Bono</th><th class="num">Precio</th><th class="num">YTM</th><th class="num">1w</th><th class="num">YTD</th></tr></thead>
           <tbody>
-            <tr><td>USD</td><td>CO</td><td class="bond-name">Ecopetrol SA<span class="rating">BB / BB / Ba2</span></td><td class="num">90,38</td><td class="num">6,93</td><td class="num ret neg">−0,19</td><td class="num">+0,52</td></tr>
-            <tr><td>USD</td><td>MX</td><td class="bond-name">BBVA México SA (Houston)<span class="rating">BB+ / BB+ / NULL</span></td><td class="num">98,33</td><td class="num">6,43</td><td class="num ret neg">−0,07</td><td class="num">+0,08</td></tr>
-            <tr><td>USD</td><td>MX</td><td class="bond-name">Nemak SAB de CV<span class="rating">BBB- / BB / Ba2</span></td><td class="num">85,75</td><td class="num">7,17</td><td class="num ret neg">−0,05</td><td class="num">−2,17</td></tr>
-            <tr><td>USD</td><td>US</td><td class="bond-name">United Rentals (NA)<span class="rating">NULL / BB / Ba2</span></td><td class="num">101,25</td><td class="num">5,17</td><td class="num ret neg">−0,03</td><td class="num">−1,25</td></tr>
-            <tr><td>USD</td><td>CL</td><td class="bond-name">Celulosa Arauco<span class="rating">BBB / BBB- / Baa3</span></td><td class="num">95,36</td><td class="num">5,56</td><td class="num ret neg">−0,03</td><td class="num">−0,51</td></tr>
+            <tr><td>USD</td><td>MX</td><td class="bond-name">El Puerto De Liverpool Sab De Cv<span class="rating">BBB+ / BBB / NULL</span></td><td class="num">95,36</td><td class="num">6,39</td><td class="num ret neg">−1,35%</td><td class="num ret ">—</td></tr>
+            <tr><td>USD</td><td>BR</td><td class="bond-name">Simpar Europe Sa<span class="rating">BB- / BB- / NULL</span></td><td class="num">86,25</td><td class="num">9,08</td><td class="num ret neg">−1,25%</td><td class="num ret pos">+5,92%</td></tr>
+            <tr><td>USD</td><td>MX</td><td class="bond-name">Bbva Mexico Sa (Houston Branch)<span class="rating">BB+ / BB+ / NULL</span></td><td class="num">97,45</td><td class="num">6,70</td><td class="num ret neg">−0,83%</td><td class="num ret neg">−0,77%</td></tr>
+            <tr><td>USD</td><td>BR</td><td class="bond-name">Petrobras Global Finance Bv<span class="rating">BB / BB+ / Ba1</span></td><td class="num">103,00</td><td class="num">6,10</td><td class="num ret neg">−0,55%</td><td class="num ret neg">−1,30%</td></tr>
+            <tr><td>USD</td><td>BR</td><td class="bond-name">Marb Bondco Plc<span class="rating">BB+ / BB+ / NULL</span></td><td class="num">89,98</td><td class="num">6,63</td><td class="num ret neg">−0,33%</td><td class="num ret neg">−1,37%</td></tr>
           </tbody>
         </table>
       </div>
@@ -1574,57 +1880,63 @@ a { color: inherit; text-decoration: none; }
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">Destacado</div>
-      <h2>BBVA México refuerza su <strong>solidez financiera</strong>.</h2>
+      <h2>Petrobras: resultados <strong>mixtos</strong> y agenda <strong>estratégica activa</strong>.</h2>
       <div class="accent-rule"></div>
     </div>
 
     <div class="feature">
       <div class="body">
         <div class="eyebrow">Análisis</div>
-        <h3>Resultados <strong>por encima del consenso</strong> y mejora de guidance para 2026.</h3>
+        <h3>EBITDA por debajo del consenso, utilidad neta sorprende <strong>al alza</strong>.</h3>
         <div class="accent-rule"></div>
         <p>
-          BBVA reportó resultados del primer trimestre de 2026 y superó las expectativas del mercado, con una
-          utilidad neta de €2.990 millones, un crecimiento interanual del 11% y un margen financiero que avanzó
-          18%, impulsado por mayores ingresos por préstamos y comisiones.
+          Petrobras concentró la atención de los mercados durante la última semana, con una agenda cargada de
+          novedades operativas, financieras y estratégicas que reflejan tanto el dinamismo de la compañía como
+          los desafíos que enfrenta en un entorno de precios del crudo volátil.
         </p>
         <p>
-          En línea con este sólido desempeño, la entidad elevó su guía para 2026 y ahora proyecta un retorno sobre
-          capital tangible superior al 20%, junto con un crecimiento de préstamos e ingresos brutos de más del 30%.
-          Mantiene una sólida posición de capital, con un ratio CET1 de 12,8%, lo que le permitió anunciar un
-          programa de recompra de acciones por más de €1.000 millones.
+          En materia financiera, los resultados del primer trimestre de 2026 presentaron un cuadro mixto. El
+          EBITDA ajustado de <strong>BRL 59.640 millones</strong> quedó por debajo del consenso de mercado de
+          BRL 64.500 millones, aunque la utilidad neta de <strong>BRL 32.700 millones</strong> superó las
+          expectativas. La compañía aprobó además el pago de BRL 9.030 millones en intereses sobre capital
+          propio a sus accionistas, distribuidos en dos cuotas en agosto y septiembre.
         </p>
         <p>
-          En el frente financiero, BBVA ratificó su favorable acceso a los mercados al emitir un bono senior
-          non-preferred por USD 1.250 millones a 5 años con un <em>spread</em> de +95 pb, además de avanzar con una
-          emisión <em>Additional Tier 1</em> dentro de su plan de fondeo para 2026.
+          En el plano operativo y de alianzas estratégicas, la compañía avanzó en múltiples frentes. Firmará en
+          junio un acuerdo de cooperación con <strong>Pemex</strong> para exploración en aguas profundas y someras y
+          campos maduros de México. Saipem suscribió un memorando para soluciones integradas de
+          descomisionamiento en Brasil, y el regulador brasileño aprobó sin restricciones el acuerdo con
+          <strong>Petronas</strong>. La compañía también completó la primera fase de su centro de datos de BRL 2.300
+          millones junto a Elea Data Centers y planea perforar al menos uno de dos pozos en el área pre-sal
+          Aram antes de 2030.
         </p>
         <p>
-          Aunque el costo de riesgo aumentó a 1,54% y algunos analistas adoptaron una visión más cautelosa por la
-          exposición a Turquía y América del Sur, el balance general de las noticias fue positivo y reforzó la
-          percepción de una entidad con fuerte capacidad de generación de utilidades y capital.
+          Este conjunto de factores impactó sobre los instrumentos de deuda de la compañía. El bono
+          <em>Petrobras 6,5% — 2033</em>, que está en el BSL, registró un retorno semanal de
+          <strong>−0,55%</strong>, movimiento que refleja la combinación de tasas todavía elevadas, la decepción
+          relativa en el EBITDA trimestral y la incertidumbre en torno a la política de precios de combustibles.
         </p>
       </div>
 
       <div class="side">
         <div>
           <div class="lab">Bono destacado</div>
-          <div class="bond-id" style="margin-top:8px;">BBVASM 5,125%<span class="small">Vencimiento 18/01/2033 · Senior Preferred</span></div>
+          <div class="bond-id" style="margin-top:8px;">Petrobras 6,5%<span class="small">Vencimiento 2033 · Senior Unsecured</span></div>
         </div>
 
         <div class="grid">
-          <div class="cell"><div class="lab">Retorno semanal</div><div class="val" style="color:#f3b94d;">−0,07%</div></div>
-          <div class="cell"><div class="lab">Utilidad neta 1T26</div><div class="val">€2,99 B</div></div>
-          <div class="cell"><div class="lab">Crecimiento i.a.</div><div class="val">+11%</div></div>
-          <div class="cell"><div class="lab">CET1 ratio</div><div class="val">12,8%</div></div>
-          <div class="cell"><div class="lab">Margen financiero</div><div class="val">+18%</div></div>
-          <div class="cell"><div class="lab">Recompra anunciada</div><div class="val">€1 B+</div></div>
+          <div class="cell"><div class="lab">Retorno semanal</div><div class="val neg">−0,55%</div></div>
+          <div class="cell"><div class="lab">EBITDA ajustado 1T26</div><div class="val">BRL 59,6 B</div></div>
+          <div class="cell"><div class="lab">Consenso EBITDA</div><div class="val">BRL 64,5 B</div></div>
+          <div class="cell"><div class="lab">Utilidad neta</div><div class="val">BRL 32,7 B</div></div>
+          <div class="cell"><div class="lab">JCP a pagar</div><div class="val">BRL 9,0 B</div></div>
+          <div class="cell"><div class="lab">Centro de datos</div><div class="val">BRL 2,3 B</div></div>
         </div>
 
         <p style="font-size:12px; line-height:1.6; color: rgba(255,255,255,0.72); position:relative; z-index:1;">
-          La leve caída refleja que los sólidos fundamentos del banco y la mejora en sus perspectivas ayudaron a
-          amortiguar el impacto de la volatilidad en las tasas internacionales, manteniendo una visión favorable
-          sobre la calidad crediticia del emisor.
+          La caída del bono refleja el impacto de un EBITDA por debajo del consenso y la ambigüedad sobre la
+          política de precios de combustibles, parcialmente compensados por el avance en alianzas estratégicas
+          y la sólida agenda operativa de mediano plazo.
         </p>
       </div>
     </div>
@@ -1640,7 +1952,7 @@ a { color: inherit; text-decoration: none; }
         <h3>Lecturas recomendadas de la semana</h3>
       </div>
       <div class="links">
-        <a href="#">Análisis Ecopetrol →</a>
+        <a href="ECOPETROL WL.pdf" target="_blank" rel="noopener" download>Update Ecopetrol (PDF) ↓</a>
       </div>
     </div>
   </div>
@@ -1656,7 +1968,7 @@ a { color: inherit; text-decoration: none; }
         </a>
         <div class="contact">
           contactus@latamconsultus.com<br>
-          Renta Fija Semanal · 11 de mayo de 2026
+          Renta Fija Semanal · 25 de mayo de 2026
         </div>
       </div>
       <div class="disclaimer">
@@ -1687,7 +1999,7 @@ a { color: inherit; text-decoration: none; }
     <div class="modal-head">
       <div>
         <div class="eyebrow">Crédito · Tabla completa</div>
-        <div class="ttl">Índices de renta fija — al 11/05/2026</div>
+        <div class="ttl">Índices de renta fija — al 22/05/2026</div>
       </div>
       <button class="modal-close" onclick="closeModal('credit-modal')" aria-label="Cerrar">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg>
@@ -1695,19 +2007,20 @@ a { color: inherit; text-decoration: none; }
     </div>
     <div class="modal-body">
       <table class="big-table" id="credit-table">
-        <thead>
+                                <thead>
           <tr>
             <th>Sector</th>
-            <th class="num">YTW</th>
-            <th class="num">Dur.</th>
-            <th class="num">Mat.</th>
-            <th class="num">OAS</th>
-            <th class="num">1w Δ YTW (bps)</th>
-            <th class="num">1w Δ Spread (bps)</th>
-            <th class="num">Ret. 1w %</th>
-            <th class="num">Ret. 1m %</th>
-            <th class="num">Ret. YTD %</th>
-            <th class="num">Ret. 1y %</th>
+            <th class="num">YTW (%)</th>
+            <th class="num">Mod Dur</th>
+            <th class="num">Mat. (años)</th>
+            <th class="num">Diferencial OAS (pb)</th>
+            <th class="num">Var. YTW 1 sem (pb)</th>
+            <th class="num">Var. Dif. 1 sem (pb)</th>
+            <th class="num">Var. Dif. YTD (pb)</th>
+            <th class="num">Retorno 1 sem (%)</th>
+            <th class="num">Retorno 1 mes (%)</th>
+            <th class="num">Retorno YTD (%)</th>
+            <th class="num">Retorno 3 años (%)</th>
           </tr>
         </thead>
         <tbody id="credit-table-body"></tbody>
@@ -1722,7 +2035,7 @@ a { color: inherit; text-decoration: none; }
     <div class="modal-head">
       <div>
         <div class="eyebrow">Flujos · Tabla completa</div>
-        <div class="ttl">ETFs de renta fija — al 19/05/2026</div>
+        <div class="ttl">ETFs de renta fija — al 22/05/2026</div>
       </div>
       <button class="modal-close" onclick="closeModal('flows-modal')" aria-label="Cerrar">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg>
@@ -1739,10 +2052,10 @@ a { color: inherit; text-decoration: none; }
             <th class="num">Ret. 1m %</th>
             <th class="num">Ret. YTD %</th>
             <th class="num">Ret. 1y %</th>
-            <th class="num">AUM Δ 1w %</th>
-            <th class="num">AUM Δ 1m %</th>
-            <th class="num">AUM Δ YTD %</th>
-            <th class="num">AUM Δ 1y %</th>
+            <th class="num">Var. AUM 1w %</th>
+            <th class="num">Var. AUM 1m %</th>
+            <th class="num">Var. AUM YTD %</th>
+            <th class="num">Var. AUM 1a %</th>
           </tr>
         </thead>
         <tbody id="flows-table-body"></tbody>
@@ -1753,7 +2066,7 @@ a { color: inherit; text-decoration: none; }
 
 <script>
 // === Data embedded from data.json ===
-const DATA = {"curva": [{"tenor": "1M", "y_31_12": 3.689, "y_1wk": 3.656, "y_curr": 3.636, "d_31_12": -5.4, "d_1wk": -2.0}, {"tenor": "2M", "y_31_12": 3.678, "y_1wk": 3.684, "y_curr": 3.663, "d_31_12": -1.4, "d_1wk": -2.1}, {"tenor": "3M", "y_31_12": 3.686, "y_1wk": 3.659, "y_curr": 3.673, "d_31_12": -1.3, "d_1wk": 1.4}, {"tenor": "4M", "y_31_12": 3.693, "y_1wk": 3.697, "y_curr": 3.698, "d_31_12": 0.5, "d_1wk": 0.1}, {"tenor": "6M", "y_31_12": 3.663, "y_1wk": 3.698, "y_curr": 3.729, "d_31_12": 6.7, "d_1wk": 3.1}, {"tenor": "1Y", "y_31_12": 3.635, "y_1wk": 3.714, "y_curr": 3.808, "d_31_12": 17.3, "d_1wk": 9.4}, {"tenor": "2Y", "y_31_12": 3.718, "y_1wk": 3.88, "y_curr": 4.072, "d_31_12": 35.4, "d_1wk": 19.2}, {"tenor": "3Y", "y_31_12": 3.738, "y_1wk": 3.904, "y_curr": 4.14, "d_31_12": 40.2, "d_1wk": 23.6}, {"tenor": "5Y", "y_31_12": 3.859, "y_1wk": 4.015, "y_curr": 4.259, "d_31_12": 40.0, "d_1wk": 24.4}, {"tenor": "7Y", "y_31_12": 4.055, "y_1wk": 4.192, "y_curr": 4.426, "d_31_12": 37.0, "d_1wk": 23.4}, {"tenor": "10Y", "y_31_12": 4.278, "y_1wk": 4.371, "y_curr": 4.594, "d_31_12": 31.6, "d_1wk": 22.3}, {"tenor": "20Y", "y_31_12": 4.892, "y_1wk": 4.955, "y_curr": 5.136, "d_31_12": 24.4, "d_1wk": 18.1}, {"tenor": "30Y", "y_31_12": 4.905, "y_1wk": 4.961, "y_curr": 5.118, "d_31_12": 21.2, "d_1wk": 15.7}], "curva_diffs": {"Diff. 2Y - 10Y": {"y_31_12": 56.0, "y_1wk": 49.1, "y_curr": 52.2}, "Diff. 3M - 30Y": {"y_31_12": 121.9, "y_1wk": 130.2, "y_curr": 144.4}}, "curva_date": "15/05/2026", "indices": {"Global": [{"ticker": "LEGATRUH Index", "sector": "Global Aggregate Hedged", "ytw": 3.92, "dur": 6.28, "mat": 8.17, "oas": 27.6, "rating": null, "ytw_1w_bps": 12.3, "ytw_1w_pct": 3.24, "spread_curr": 26.9, "spread_1w_bps": 0.7, "spread_1w_pct": 2.55, "ret_1w": -0.57, "ret_mtd": -1.15, "ret_1m": -1.55, "ret_3m": -0.42, "ret_ytd": 2.94, "ret_1y": 4.1}, {"ticker": "LGCPTRUH Index", "sector": "Corporate Hedged", "ytw": 4.82, "dur": 5.96, "mat": 8.46, "oas": 77.8, "rating": "A3/BAA1", "ytw_1w_bps": 12.1, "ytw_1w_pct": 2.58, "spread_curr": 79.6, "spread_1w_bps": -1.8, "spread_1w_pct": -2.24, "ret_1w": -0.37, "ret_mtd": -1.09, "ret_1m": -1.51, "ret_3m": -0.27, "ret_ytd": 4.88, "ret_1y": 5.67}, {"ticker": "LF93TRUH Index", "sector": "Multiverse Hedged", "ytw": 4.14, "dur": 6.18, "mat": 8.08, "oas": 36.7, "rating": null, "ytw_1w_bps": 12.8, "ytw_1w_pct": 3.18, "spread_curr": 35.8, "spread_1w_bps": 0.9, "spread_1w_pct": 2.6, "ret_1w": -0.56, "ret_mtd": -1.15, "ret_1m": -1.52, "ret_3m": -0.39, "ret_ytd": 3.13, "ret_1y": 4.33}, {"ticker": "H30909US Index", "sector": "Bloomberg Global CoCo Banking Hedged", "ytw": 5.8, "dur": 3.82, "mat": 4.83, "oas": 219.5, "rating": "BAA3/BA1", "ytw_1w_bps": 17.9, "ytw_1w_pct": 3.18, "spread_curr": 215.6, "spread_1w_bps": 3.9, "spread_1w_pct": 1.79, "ret_1w": -0.05, "ret_mtd": -0.07, "ret_1m": -0.27, "ret_3m": 1.43, "ret_ytd": 9.03, "ret_1y": 12.33}], "United States": [{"ticker": "LUATTRUU Index", "sector": "U.S. Treasury", "ytw": 4.41, "dur": 5.85, "mat": 7.72, "oas": null, "rating": "AA1/AA1", "ytw_1w_bps": 15.8, "ytw_1w_pct": 3.73, "spread_curr": null, "spread_1w_bps": null, "spread_1w_pct": null, "ret_1w": -0.84, "ret_mtd": -1.53, "ret_1m": -2.01, "ret_3m": -0.96, "ret_ytd": 3.18, "ret_1y": 2.61}, {"ticker": "BNACTRUU Index", "sector": "Non-Agency CMBS", "ytw": 5.41, "dur": 3.38, "mat": 3.86, "oas": 117.6, "rating": "AAA/AA1", "ytw_1w_bps": 13.8, "ytw_1w_pct": 2.62, "spread_curr": 119.5, "spread_1w_bps": -2.0, "spread_1w_pct": -1.65, "ret_1w": -0.29, "ret_mtd": -0.67, "ret_1m": -0.72, "ret_3m": 0.39, "ret_ytd": 5.48, "ret_1y": 6.39}, {"ticker": "LUACTRUU Index", "sector": "Corporate", "ytw": 5.28, "dur": 6.89, "mat": 10.44, "oas": 74.2, "rating": "A3/BAA1", "ytw_1w_bps": 14.1, "ytw_1w_pct": 2.75, "spread_curr": 76.0, "spread_1w_bps": -1.8, "spread_1w_pct": -2.43, "ret_1w": -0.52, "ret_mtd": -1.38, "ret_1m": -1.85, "ret_3m": -0.61, "ret_ytd": 5.34, "ret_1y": 5.19}, {"ticker": "LD06TRUU Index", "sector": "Intermediate", "ytw": 4.96, "dur": 4.25, "mat": 4.95, "oas": 66.9, "rating": "A3/BAA1", "ytw_1w_bps": 14.9, "ytw_1w_pct": 3.09, "spread_curr": 68.3, "spread_1w_bps": -1.3, "spread_1w_pct": -1.97, "ret_1w": -0.4, "ret_mtd": -0.93, "ret_1m": -1.04, "ret_3m": -0.15, "ret_ytd": 5.07, "ret_1y": 5.68}, {"ticker": "LCA3TRUU Index", "sector": "Aaa", "ytw": 5.14, "dur": 10.58, "mat": 17.69, "oas": 33.2, "rating": "AAA/AAA", "ytw_1w_bps": 13.6, "ytw_1w_pct": 2.71, "spread_curr": 35.7, "spread_1w_bps": -2.4, "spread_1w_pct": -6.83, "ret_1w": -0.97, "ret_mtd": -2.55, "ret_1m": -3.09, "ret_3m": -1.8, "ret_ytd": 3.27, "ret_1y": 2.12}, {"ticker": "LCA2TRUU Index", "sector": "Aa", "ytw": 5.11, "dur": 8.01, "mat": 13.33, "oas": 49.6, "rating": "AA2/AA3", "ytw_1w_bps": 13.1, "ytw_1w_pct": 2.63, "spread_curr": 51.9, "spread_1w_bps": -2.3, "spread_1w_pct": -4.46, "ret_1w": -0.77, "ret_mtd": -1.89, "ret_1m": -2.3, "ret_3m": -1.13, "ret_ytd": 3.89, "ret_1y": 3.5}, {"ticker": "LCA1TRUU Index", "sector": "A", "ytw": 5.15, "dur": 6.85, "mat": 10.1, "oas": 62.3, "rating": "A2/A3", "ytw_1w_bps": 14.6, "ytw_1w_pct": 2.92, "spread_curr": 63.7, "spread_1w_bps": -1.3, "spread_1w_pct": -2.08, "ret_1w": -0.58, "ret_mtd": -1.41, "ret_1m": -1.91, "ret_3m": -0.73, "ret_ytd": 5.19, "ret_1y": 4.79}, {"ticker": "LCB1TRUU Index", "sector": "Baa", "ytw": 5.44, "dur": 6.63, "mat": 10.04, "oas": 92.2, "rating": "BAA1/BAA2", "ytw_1w_bps": 13.9, "ytw_1w_pct": 2.62, "spread_curr": 94.5, "spread_1w_bps": -2.2, "spread_1w_pct": -2.38, "ret_1w": -0.4, "ret_mtd": -1.22, "ret_1m": -1.67, "ret_3m": -0.36, "ret_ytd": 5.79, "ret_1y": 5.91}, {"ticker": "LUMSTRUU Index", "sector": "U.S. MBS", "ytw": 5.13, "dur": 5.67, "mat": 7.56, "oas": 27.1, "rating": "AA1/AA1", "ytw_1w_bps": 25.0, "ytw_1w_pct": 5.12, "spread_curr": 18.9, "spread_1w_bps": 8.2, "spread_1w_pct": 43.56, "ret_1w": -0.95, "ret_mtd": -1.81, "ret_1m": -1.86, "ret_3m": -0.48, "ret_ytd": 5.82, "ret_1y": 4.21}], "High-Yield": [{"ticker": "LG30TRUH Index", "sector": "Global High Yield Hedged", "ytw": 7.08, "dur": 3.92, "mat": 5.87, "oas": 287.4, "rating": null, "ytw_1w_bps": 21.2, "ytw_1w_pct": 3.09, "spread_curr": 280.8, "spread_1w_bps": 6.6, "spread_1w_pct": 2.34, "ret_1w": -0.15, "ret_mtd": -0.52, "ret_1m": -0.07, "ret_3m": 1.2, "ret_ytd": 8.54, "ret_1y": 10.93}, {"ticker": "LF98TRUU Index", "sector": "U.S. Corporate High Yield", "ytw": 7.22, "dur": 3.32, "mat": 4.8, "oas": 272.5, "rating": "BA3/B1", "ytw_1w_bps": 24.0, "ytw_1w_pct": 3.45, "spread_curr": 263.8, "spread_1w_bps": 8.7, "spread_1w_pct": 3.3, "ret_1w": -0.35, "ret_mtd": -0.63, "ret_1m": -0.06, "ret_3m": 0.83, "ret_ytd": 6.97, "ret_1y": 9.02}, {"ticker": "BCBATRUU Index", "sector": "Ba", "ytw": 6.13, "dur": 3.57, "mat": 5.07, "oas": 163.9, "rating": "BA2/BA3", "ytw_1w_bps": 19.7, "ytw_1w_pct": 3.31, "spread_curr": 159.7, "spread_1w_bps": 4.2, "spread_1w_pct": 2.64, "ret_1w": -0.3, "ret_mtd": -0.59, "ret_1m": -0.26, "ret_3m": 0.86, "ret_ytd": 6.88, "ret_1y": 8.17}, {"ticker": "BCBHTRUU Index", "sector": "B", "ytw": 7.46, "dur": 3.02, "mat": 4.56, "oas": 295.7, "rating": "B1/B2", "ytw_1w_bps": 28.5, "ytw_1w_pct": 3.97, "spread_curr": 282.9, "spread_1w_bps": 12.9, "spread_1w_pct": 4.55, "ret_1w": -0.25, "ret_mtd": -0.61, "ret_1m": 0.31, "ret_3m": 0.9, "ret_ytd": 7.18, "ret_1y": 8.8}, {"ticker": "BCAUTRUU Index", "sector": "Caa", "ytw": 11.46, "dur": 2.94, "mat": 4.03, "oas": 702.2, "rating": "CAA1/CAA2", "ytw_1w_bps": 33.5, "ytw_1w_pct": 3.01, "spread_curr": 682.0, "spread_1w_bps": 20.1, "spread_1w_pct": 2.95, "ret_1w": -0.53, "ret_mtd": -0.3, "ret_1m": 0.56, "ret_3m": 1.05, "ret_ytd": 8.26, "ret_1y": 12.38}, {"ticker": "LP02TREU Index", "sector": "High Yield (Euro)", "ytw": 5.53, "dur": 3.13, "mat": 4.08, "oas": 264.3, "rating": "BA2/BA3", "ytw_1w_bps": -34.5, "ytw_1w_pct": -5.88, "spread_curr": 268.5, "spread_1w_bps": -4.2, "spread_1w_pct": -1.55, "ret_1w": 0.43, "ret_mtd": 0.27, "ret_1m": -0.18, "ret_3m": 0.68, "ret_ytd": 4.03, "ret_1y": 7.36}], "Emerging Markets": [{"ticker": "EMUSTRUU Index", "sector": "EM USD Aggregate", "ytw": 6.18, "dur": 6.01, "mat": 9.57, "oas": 170.1, "rating": "BAA2/BAA3", "ytw_1w_bps": 19.9, "ytw_1w_pct": 3.33, "spread_curr": 165.9, "spread_1w_bps": 4.2, "spread_1w_pct": 2.55, "ret_1w": -0.57, "ret_mtd": -1.11, "ret_1m": -1.21, "ret_3m": 0.17, "ret_ytd": 8.48, "ret_1y": 8.44}, {"ticker": "BEHGTRUU Index", "sector": "Investment Grade", "ytw": 5.32, "dur": 6.44, "mat": 10.11, "oas": 83.4, "rating": "A2/A3", "ytw_1w_bps": 16.7, "ytw_1w_pct": 3.24, "spread_curr": 82.1, "spread_1w_bps": 1.3, "spread_1w_pct": 1.61, "ret_1w": -0.8, "ret_mtd": -1.29, "ret_1m": -1.77, "ret_3m": -0.72, "ret_ytd": 6.17, "ret_1y": 4.86}, {"ticker": "BEBGTRUU Index", "sector": "High Yield", "ytw": 7.63, "dur": 5.28, "mat": 8.64, "oas": 317.3, "rating": "BA3/B1", "ytw_1w_bps": 24.7, "ytw_1w_pct": 3.34, "spread_curr": 308.9, "spread_1w_bps": 8.4, "spread_1w_pct": 2.72, "ret_1w": -0.16, "ret_mtd": -0.82, "ret_1m": -0.24, "ret_3m": 1.73, "ret_ytd": 12.54, "ret_1y": 14.83}, {"ticker": "BSELTRUU Index", "sector": "EM USD LATAM", "ytw": 6.88, "dur": 6.6, "mat": 11.37, "oas": 227.2, "rating": "BA1/BA2", "ytw_1w_bps": 23.1, "ytw_1w_pct": 3.48, "spread_curr": 220.6, "spread_1w_bps": 6.6, "spread_1w_pct": 2.98, "ret_1w": -0.74, "ret_mtd": -1.21, "ret_1m": -0.61, "ret_3m": 1.15, "ret_ytd": 10.89, "ret_1y": 11.53}]}, "indices_date": "11/05/2026", "spreads": [{"date": "2023-12-29", "us_ig": 98.7, "us_hy": 323.3, "em_usd": 296.7, "em_latam": 425.1, "us_ig_y": 5.06, "us_hy_y": 7.59, "em_usd_y": 7.04, "em_latam_y": 8.29}, {"date": "2024-01-05", "us_ig": 103.3, "us_hy": 352.8, "em_usd": 302.3, "em_latam": 437.1, "us_ig_y": 5.28, "us_hy_y": 8.0, "em_usd_y": 7.26, "em_latam_y": 8.58}, {"date": "2024-01-12", "us_ig": 96.5, "us_hy": 337.5, "em_usd": 303.2, "em_latam": 430.3, "us_ig_y": 5.07, "us_hy_y": 7.71, "em_usd_y": 7.13, "em_latam_y": 8.39}, {"date": "2024-01-19", "us_ig": 95.2, "us_hy": 338.4, "em_usd": 298.8, "em_latam": 430.9, "us_ig_y": 5.26, "us_hy_y": 7.89, "em_usd_y": 7.28, "em_latam_y": 8.58}, {"date": "2024-01-26", "us_ig": 92.5, "us_hy": 324.8, "em_usd": 297.5, "em_latam": 427.7, "us_ig_y": 5.23, "us_hy_y": 7.75, "em_usd_y": 7.26, "em_latam_y": 8.56}, {"date": "2024-02-02", "us_ig": 96.3, "us_hy": 329.9, "em_usd": 297.5, "em_latam": 431.9, "us_ig_y": 5.18, "us_hy_y": 7.76, "em_usd_y": 7.18, "em_latam_y": 8.5}, {"date": "2024-02-09", "us_ig": 95.4, "us_hy": 315.5, "em_usd": 289.4, "em_latam": 426.6, "us_ig_y": 5.31, "us_hy_y": 7.75, "em_usd_y": 7.24, "em_latam_y": 8.59}, {"date": "2024-02-16", "us_ig": 91.6, "us_hy": 314.4, "em_usd": 281.4, "em_latam": 411.8, "us_ig_y": 5.4, "us_hy_y": 7.87, "em_usd_y": 7.29, "em_latam_y": 8.57}, {"date": "2024-02-23", "us_ig": 90.7, "us_hy": 305.6, "em_usd": 276.5, "em_latam": 405.9, "us_ig_y": 5.37, "us_hy_y": 7.8, "em_usd_y": 7.23, "em_latam_y": 8.49}, {"date": "2024-03-01", "us_ig": 97.3, "us_hy": 316.3, "em_usd": 282.7, "em_latam": 414.3, "us_ig_y": 5.34, "us_hy_y": 7.82, "em_usd_y": 7.2, "em_latam_y": 8.49}, {"date": "2024-03-08", "us_ig": 94.8, "us_hy": 314.0, "em_usd": 283.3, "em_latam": 417.1, "us_ig_y": 5.23, "us_hy_y": 7.72, "em_usd_y": 7.12, "em_latam_y": 8.43}, {"date": "2024-03-15", "us_ig": 89.5, "us_hy": 302.0, "em_usd": 270.5, "em_latam": 403.3, "us_ig_y": 5.42, "us_hy_y": 7.82, "em_usd_y": 7.23, "em_latam_y": 8.52}, {"date": "2024-03-22", "us_ig": 88.3, "us_hy": 296.5, "em_usd": 264.4, "em_latam": 388.4, "us_ig_y": 5.29, "us_hy_y": 7.64, "em_usd_y": 7.05, "em_latam_y": 8.27}, {"date": "2024-03-29", "us_ig": 90.0, "us_hy": 299.1, "em_usd": 264.1, "em_latam": 385.2, "us_ig_y": 5.3, "us_hy_y": 7.66, "em_usd_y": 7.04, "em_latam_y": 8.21}, {"date": "2024-04-05", "us_ig": 89.0, "us_hy": 303.2, "em_usd": 257.2, "em_latam": 373.2, "us_ig_y": 5.45, "us_hy_y": 7.84, "em_usd_y": 7.14, "em_latam_y": 8.27}, {"date": "2024-04-12", "us_ig": 89.4, "us_hy": 310.4, "em_usd": 259.1, "em_latam": 377.2, "us_ig_y": 5.59, "us_hy_y": 8.06, "em_usd_y": 7.3, "em_latam_y": 8.44}, {"date": "2024-04-19", "us_ig": 91.8, "us_hy": 323.0, "em_usd": 261.9, "em_latam": 378.7, "us_ig_y": 5.71, "us_hy_y": 8.27, "em_usd_y": 7.42, "em_latam_y": 8.56}, {"date": "2024-04-26", "us_ig": 87.4, "us_hy": 304.0, "em_usd": 259.3, "em_latam": 371.3, "us_ig_y": 5.71, "us_hy_y": 8.13, "em_usd_y": 7.44, "em_latam_y": 8.53}, {"date": "2024-05-03", "us_ig": 85.9, "us_hy": 293.0, "em_usd": 261.8, "em_latam": 374.4, "us_ig_y": 5.52, "us_hy_y": 7.85, "em_usd_y": 7.28, "em_latam_y": 8.38}, {"date": "2024-05-10", "us_ig": 87.1, "us_hy": 298.2, "em_usd": 255.8, "em_latam": 371.6, "us_ig_y": 5.55, "us_hy_y": 7.92, "em_usd_y": 7.24, "em_latam_y": 8.37}, {"date": "2024-05-17", "us_ig": 86.5, "us_hy": 296.9, "em_usd": 250.2, "em_latam": 369.1, "us_ig_y": 5.47, "us_hy_y": 7.85, "em_usd_y": 7.12, "em_latam_y": 8.27}, {"date": "2024-05-24", "us_ig": 86.7, "us_hy": 300.0, "em_usd": 252.5, "em_latam": 379.9, "us_ig_y": 5.54, "us_hy_y": 7.95, "em_usd_y": 7.21, "em_latam_y": 8.44}, {"date": "2024-05-31", "us_ig": 84.6, "us_hy": 307.9, "em_usd": 253.3, "em_latam": 377.6, "us_ig_y": 5.52, "us_hy_y": 8.0, "em_usd_y": 7.21, "em_latam_y": 8.42}, {"date": "2024-06-07", "us_ig": 87.7, "us_hy": 303.4, "em_usd": 259.2, "em_latam": 398.3, "us_ig_y": 5.5, "us_hy_y": 7.93, "em_usd_y": 7.22, "em_latam_y": 8.58}, {"date": "2024-06-14", "us_ig": 92.2, "us_hy": 320.3, "em_usd": 263.1, "em_latam": 397.2, "us_ig_y": 5.34, "us_hy_y": 7.91, "em_usd_y": 7.06, "em_latam_y": 8.36}, {"date": "2024-06-21", "us_ig": 93.5, "us_hy": 314.5, "em_usd": 262.5, "em_latam": 394.2, "us_ig_y": 5.39, "us_hy_y": 7.9, "em_usd_y": 7.09, "em_latam_y": 8.37}, {"date": "2024-06-28", "us_ig": 93.9, "us_hy": 309.1, "em_usd": 261.7, "em_latam": 395.5, "us_ig_y": 5.48, "us_hy_y": 7.91, "em_usd_y": 7.17, "em_latam_y": 8.47}, {"date": "2024-07-05", "us_ig": 89.0, "us_hy": 313.8, "em_usd": 265.2, "em_latam": 402.1, "us_ig_y": 5.34, "us_hy_y": 7.86, "em_usd_y": 7.1, "em_latam_y": 8.44}, {"date": "2024-07-12", "us_ig": 89.2, "us_hy": 306.8, "em_usd": 262.1, "em_latam": 394.5, "us_ig_y": 5.22, "us_hy_y": 7.67, "em_usd_y": 6.95, "em_latam_y": 8.25}, {"date": "2024-07-19", "us_ig": 91.1, "us_hy": 303.1, "em_usd": 263.0, "em_latam": 402.2, "us_ig_y": 5.3, "us_hy_y": 7.67, "em_usd_y": 7.02, "em_latam_y": 8.39}, {"date": "2024-07-26", "us_ig": 92.9, "us_hy": 305.6, "em_usd": 266.8, "em_latam": 401.0, "us_ig_y": 5.26, "us_hy_y": 7.63, "em_usd_y": 7.0, "em_latam_y": 8.33}, {"date": "2024-08-02", "us_ig": 104.5, "us_hy": 358.9, "em_usd": 291.3, "em_latam": 427.2, "us_ig_y": 4.94, "us_hy_y": 7.7, "em_usd_y": 6.8, "em_latam_y": 8.16}, {"date": "2024-08-09", "us_ig": 102.5, "us_hy": 338.7, "em_usd": 281.3, "em_latam": 414.2, "us_ig_y": 5.08, "us_hy_y": 7.66, "em_usd_y": 6.86, "em_latam_y": 8.18}, {"date": "2024-08-16", "us_ig": 95.6, "us_hy": 318.6, "em_usd": 272.5, "em_latam": 400.0, "us_ig_y": 4.97, "us_hy_y": 7.47, "em_usd_y": 6.74, "em_latam_y": 8.0}, {"date": "2024-08-23", "us_ig": 93.9, "us_hy": 311.6, "em_usd": 273.1, "em_latam": 405.3, "us_ig_y": 4.86, "us_hy_y": 7.31, "em_usd_y": 6.65, "em_latam_y": 7.97}, {"date": "2024-08-30", "us_ig": 92.6, "us_hy": 304.9, "em_usd": 261.9, "em_latam": 392.5, "us_ig_y": 4.94, "us_hy_y": 7.3, "em_usd_y": 6.62, "em_latam_y": 7.93}, {"date": "2024-09-06", "us_ig": 97.8, "us_hy": 322.1, "em_usd": 267.9, "em_latam": 409.8, "us_ig_y": 4.76, "us_hy_y": 7.24, "em_usd_y": 6.43, "em_latam_y": 7.87}, {"date": "2024-09-13", "us_ig": 96.1, "us_hy": 321.8, "em_usd": 267.3, "em_latam": 403.6, "us_ig_y": 4.68, "us_hy_y": 7.18, "em_usd_y": 6.38, "em_latam_y": 7.75}, {"date": "2024-09-20", "us_ig": 90.7, "us_hy": 301.0, "em_usd": 254.7, "em_latam": 385.5, "us_ig_y": 4.67, "us_hy_y": 6.98, "em_usd_y": 6.3, "em_latam_y": 7.63}, {"date": "2024-09-27", "us_ig": 89.3, "us_hy": 298.8, "em_usd": 250.4, "em_latam": 380.8, "us_ig_y": 4.68, "us_hy_y": 6.98, "em_usd_y": 6.27, "em_latam_y": 7.6}, {"date": "2024-10-04", "us_ig": 83.5, "us_hy": 283.9, "em_usd": 237.2, "em_latam": 358.6, "us_ig_y": 4.88, "us_hy_y": 7.1, "em_usd_y": 6.4, "em_latam_y": 7.62}, {"date": "2024-10-11", "us_ig": 80.6, "us_hy": 294.2, "em_usd": 232.0, "em_latam": 357.8, "us_ig_y": 4.93, "us_hy_y": 7.24, "em_usd_y": 6.42, "em_latam_y": 7.7}, {"date": "2024-10-18", "us_ig": 81.1, "us_hy": 285.8, "em_usd": 230.9, "em_latam": 355.4, "us_ig_y": 4.93, "us_hy_y": 7.16, "em_usd_y": 6.41, "em_latam_y": 7.67}, {"date": "2024-10-25", "us_ig": 82.4, "us_hy": 285.5, "em_usd": 227.7, "em_latam": 350.7, "us_ig_y": 5.1, "us_hy_y": 7.3, "em_usd_y": 6.53, "em_latam_y": 7.78}, {"date": "2024-11-01", "us_ig": 83.2, "us_hy": 275.0, "em_usd": 222.2, "em_latam": 346.9, "us_ig_y": 5.23, "us_hy_y": 7.31, "em_usd_y": 6.6, "em_latam_y": 7.87}, {"date": "2024-11-08", "us_ig": 73.9, "us_hy": 256.1, "em_usd": 215.4, "em_latam": 331.7, "us_ig_y": 5.09, "us_hy_y": 7.12, "em_usd_y": 6.49, "em_latam_y": 7.66}, {"date": "2024-11-15", "us_ig": 77.9, "us_hy": 265.7, "em_usd": 216.4, "em_latam": 333.4, "us_ig_y": 5.25, "us_hy_y": 7.29, "em_usd_y": 6.61, "em_latam_y": 7.82}, {"date": "2024-11-22", "us_ig": 77.8, "us_hy": 257.5, "em_usd": 214.1, "em_latam": 326.0, "us_ig_y": 5.25, "us_hy_y": 7.24, "em_usd_y": 6.6, "em_latam_y": 7.74}, {"date": "2024-11-29", "us_ig": 77.9, "us_hy": 265.6, "em_usd": 221.8, "em_latam": 336.1, "us_ig_y": 5.05, "us_hy_y": 7.14, "em_usd_y": 6.48, "em_latam_y": 7.64}, {"date": "2024-12-06", "us_ig": 77.7, "us_hy": 263.3, "em_usd": 221.8, "em_latam": 332.5, "us_ig_y": 4.98, "us_hy_y": 7.05, "em_usd_y": 6.42, "em_latam_y": 7.54}, {"date": "2024-12-13", "us_ig": 75.0, "us_hy": 261.8, "em_usd": 212.4, "em_latam": 320.6, "us_ig_y": 5.17, "us_hy_y": 7.19, "em_usd_y": 6.53, "em_latam_y": 7.65}, {"date": "2024-12-20", "us_ig": 79.1, "us_hy": 284.5, "em_usd": 217.5, "em_latam": 328.6, "us_ig_y": 5.32, "us_hy_y": 7.5, "em_usd_y": 6.69, "em_latam_y": 7.84}, {"date": "2024-12-27", "us_ig": 77.1, "us_hy": 280.0, "em_usd": 214.5, "em_latam": 323.8, "us_ig_y": 5.37, "us_hy_y": 7.5, "em_usd_y": 6.72, "em_latam_y": 7.86}, {"date": "2025-01-03", "us_ig": 79.5, "us_hy": 274.3, "em_usd": 216.2, "em_latam": 323.3, "us_ig_y": 5.36, "us_hy_y": 7.39, "em_usd_y": 6.71, "em_latam_y": 7.83}, {"date": "2025-01-10", "us_ig": 80.4, "us_hy": 273.6, "em_usd": 211.4, "em_latam": 315.4, "us_ig_y": 5.52, "us_hy_y": 7.52, "em_usd_y": 6.8, "em_latam_y": 7.91}, {"date": "2025-01-17", "us_ig": 79.8, "us_hy": 262.5, "em_usd": 216.6, "em_latam": 321.9, "us_ig_y": 5.38, "us_hy_y": 7.29, "em_usd_y": 6.72, "em_latam_y": 7.83}, {"date": "2025-01-24", "us_ig": 77.8, "us_hy": 255.8, "em_usd": 211.9, "em_latam": 317.8, "us_ig_y": 5.35, "us_hy_y": 7.23, "em_usd_y": 6.67, "em_latam_y": 7.79}, {"date": "2025-01-31", "us_ig": 78.6, "us_hy": 260.6, "em_usd": 208.5, "em_latam": 307.3, "us_ig_y": 5.3, "us_hy_y": 7.2, "em_usd_y": 6.58, "em_latam_y": 7.62}, {"date": "2025-02-07", "us_ig": 82.1, "us_hy": 263.6, "em_usd": 208.7, "em_latam": 307.6, "us_ig_y": 5.3, "us_hy_y": 7.25, "em_usd_y": 6.55, "em_latam_y": 7.58}, {"date": "2025-02-14", "us_ig": 77.9, "us_hy": 260.1, "em_usd": 207.3, "em_latam": 307.5, "us_ig_y": 5.26, "us_hy_y": 7.19, "em_usd_y": 6.53, "em_latam_y": 7.57}, {"date": "2025-02-21", "us_ig": 79.7, "us_hy": 270.8, "em_usd": 211.9, "em_latam": 316.1, "us_ig_y": 5.22, "us_hy_y": 7.23, "em_usd_y": 6.52, "em_latam_y": 7.61}, {"date": "2025-02-28", "us_ig": 86.7, "us_hy": 280.4, "em_usd": 221.0, "em_latam": 330.1, "us_ig_y": 5.08, "us_hy_y": 7.15, "em_usd_y": 6.41, "em_latam_y": 7.54}, {"date": "2025-03-07", "us_ig": 87.1, "us_hy": 290.8, "em_usd": 218.2, "em_latam": 323.5, "us_ig_y": 5.18, "us_hy_y": 7.3, "em_usd_y": 6.47, "em_latam_y": 7.57}, {"date": "2025-03-14", "us_ig": 93.1, "us_hy": 320.8, "em_usd": 223.8, "em_latam": 334.0, "us_ig_y": 5.24, "us_hy_y": 7.59, "em_usd_y": 6.52, "em_latam_y": 7.67}, {"date": "2025-03-21", "us_ig": 90.2, "us_hy": 316.5, "em_usd": 227.6, "em_latam": 336.9, "us_ig_y": 5.15, "us_hy_y": 7.52, "em_usd_y": 6.49, "em_latam_y": 7.64}, {"date": "2025-03-28", "us_ig": 92.7, "us_hy": 339.8, "em_usd": 231.8, "em_latam": 342.3, "us_ig_y": 5.17, "us_hy_y": 7.72, "em_usd_y": 6.53, "em_latam_y": 7.69}, {"date": "2025-04-04", "us_ig": 108.9, "us_hy": 426.7, "em_usd": 262.5, "em_latam": 380.5, "us_ig_y": 5.1, "us_hy_y": 8.3, "em_usd_y": 6.61, "em_latam_y": 7.84}, {"date": "2025-04-11", "us_ig": 113.5, "us_hy": 418.7, "em_usd": 267.0, "em_latam": 380.6, "us_ig_y": 5.55, "us_hy_y": 8.58, "em_usd_y": 7.04, "em_latam_y": 8.25}, {"date": "2025-04-18", "us_ig": 108.0, "us_hy": 398.0, "em_usd": 257.3, "em_latam": 362.9, "us_ig_y": 5.34, "us_hy_y": 8.19, "em_usd_y": 6.79, "em_latam_y": 7.92}, {"date": "2025-04-25", "us_ig": 100.8, "us_hy": 360.2, "em_usd": 246.0, "em_latam": 343.3, "us_ig_y": 5.21, "us_hy_y": 7.8, "em_usd_y": 6.62, "em_latam_y": 7.67}, {"date": "2025-05-02", "us_ig": 102.3, "us_hy": 351.6, "em_usd": 243.6, "em_latam": 342.1, "us_ig_y": 5.28, "us_hy_y": 7.76, "em_usd_y": 6.65, "em_latam_y": 7.71}, {"date": "2025-05-09", "us_ig": 98.9, "us_hy": 343.2, "em_usd": 236.6, "em_latam": 331.5, "us_ig_y": 5.3, "us_hy_y": 7.74, "em_usd_y": 6.64, "em_latam_y": 7.66}, {"date": "2025-05-16", "us_ig": 89.7, "us_hy": 305.3, "em_usd": 221.9, "em_latam": 314.7, "us_ig_y": 5.29, "us_hy_y": 7.46, "em_usd_y": 6.58, "em_latam_y": 7.57}, {"date": "2025-05-23", "us_ig": 91.3, "us_hy": 330.3, "em_usd": 222.9, "em_latam": 313.4, "us_ig_y": 5.35, "us_hy_y": 7.69, "em_usd_y": 6.62, "em_latam_y": 7.61}, {"date": "2025-05-30", "us_ig": 88.1, "us_hy": 314.6, "em_usd": 224.5, "em_latam": 318.1, "us_ig_y": 5.21, "us_hy_y": 7.46, "em_usd_y": 6.54, "em_latam_y": 7.55}, {"date": "2025-06-06", "us_ig": 85.0, "us_hy": 299.8, "em_usd": 214.2, "em_latam": 305.8, "us_ig_y": 5.29, "us_hy_y": 7.43, "em_usd_y": 6.55, "em_latam_y": 7.53}, {"date": "2025-06-13", "us_ig": 85.3, "us_hy": 307.7, "em_usd": 218.1, "em_latam": 303.0, "us_ig_y": 5.2, "us_hy_y": 7.42, "em_usd_y": 6.49, "em_latam_y": 7.41}, {"date": "2025-06-20", "us_ig": 84.6, "us_hy": 299.0, "em_usd": 220.2, "em_latam": 308.3, "us_ig_y": 5.16, "us_hy_y": 7.3, "em_usd_y": 6.48, "em_latam_y": 7.44}, {"date": "2025-06-27", "us_ig": 84.5, "us_hy": 291.8, "em_usd": 218.3, "em_latam": 303.9, "us_ig_y": 5.06, "us_hy_y": 7.1, "em_usd_y": 6.35, "em_latam_y": 7.29}, {"date": "2025-07-04", "us_ig": 76.9, "us_hy": 267.6, "em_usd": 203.7, "em_latam": 290.4, "us_ig_y": 5.05, "us_hy_y": 6.95, "em_usd_y": 6.29, "em_latam_y": 7.22}, {"date": "2025-07-11", "us_ig": 80.2, "us_hy": 283.0, "em_usd": 202.4, "em_latam": 287.8, "us_ig_y": 5.14, "us_hy_y": 7.14, "em_usd_y": 6.33, "em_latam_y": 7.26}, {"date": "2025-07-18", "us_ig": 77.5, "us_hy": 283.2, "em_usd": 204.0, "em_latam": 293.9, "us_ig_y": 5.11, "us_hy_y": 7.11, "em_usd_y": 6.34, "em_latam_y": 7.32}, {"date": "2025-07-25", "us_ig": 75.8, "us_hy": 273.7, "em_usd": 199.6, "em_latam": 288.5, "us_ig_y": 5.07, "us_hy_y": 7.03, "em_usd_y": 6.27, "em_latam_y": 7.23}, {"date": "2025-08-01", "us_ig": 80.5, "us_hy": 300.7, "em_usd": 209.3, "em_latam": 299.1, "us_ig_y": 4.94, "us_hy_y": 7.11, "em_usd_y": 6.19, "em_latam_y": 7.16}, {"date": "2025-08-08", "us_ig": 78.3, "us_hy": 283.3, "em_usd": 197.9, "em_latam": 284.3, "us_ig_y": 4.98, "us_hy_y": 6.99, "em_usd_y": 6.14, "em_latam_y": 7.07}, {"date": "2025-08-15", "us_ig": 73.1, "us_hy": 279.4, "em_usd": 188.9, "em_latam": 272.5, "us_ig_y": 4.95, "us_hy_y": 6.95, "em_usd_y": 6.07, "em_latam_y": 6.98}, {"date": "2025-08-22", "us_ig": 74.9, "us_hy": 279.1, "em_usd": 194.8, "em_latam": 280.8, "us_ig_y": 4.91, "us_hy_y": 6.87, "em_usd_y": 6.07, "em_latam_y": 7.0}, {"date": "2025-08-29", "us_ig": 79.0, "us_hy": 272.3, "em_usd": 199.4, "em_latam": 289.5, "us_ig_y": 4.91, "us_hy_y": 6.75, "em_usd_y": 6.07, "em_latam_y": 7.05}, {"date": "2025-09-05", "us_ig": 77.4, "us_hy": 272.4, "em_usd": 202.4, "em_latam": 290.8, "us_ig_y": 4.78, "us_hy_y": 6.66, "em_usd_y": 5.99, "em_latam_y": 6.94}, {"date": "2025-09-12", "us_ig": 74.3, "us_hy": 269.8, "em_usd": 199.9, "em_latam": 299.8, "us_ig_y": 4.74, "us_hy_y": 6.64, "em_usd_y": 5.96, "em_latam_y": 7.03}, {"date": "2025-09-19", "us_ig": 71.7, "us_hy": 261.7, "em_usd": 206.2, "em_latam": 330.9, "us_ig_y": 4.76, "us_hy_y": 6.58, "em_usd_y": 6.05, "em_latam_y": 7.35}, {"date": "2025-09-26", "us_ig": 73.8, "us_hy": 265.6, "em_usd": 192.4, "em_latam": 291.8, "us_ig_y": 4.84, "us_hy_y": 6.71, "em_usd_y": 5.99, "em_latam_y": 7.06}, {"date": "2025-10-03", "us_ig": 72.5, "us_hy": 268.1, "em_usd": 197.1, "em_latam": 301.0, "us_ig_y": 4.78, "us_hy_y": 6.68, "em_usd_y": 5.97, "em_latam_y": 7.04}, {"date": "2025-10-10", "us_ig": 79.2, "us_hy": 303.6, "em_usd": 205.6, "em_latam": 312.1, "us_ig_y": 4.78, "us_hy_y": 6.99, "em_usd_y": 6.01, "em_latam_y": 7.14}, {"date": "2025-10-17", "us_ig": 77.9, "us_hy": 292.6, "em_usd": 208.2, "em_latam": 315.9, "us_ig_y": 4.71, "us_hy_y": 6.79, "em_usd_y": 5.98, "em_latam_y": 7.13}, {"date": "2025-10-24", "us_ig": 75.2, "us_hy": 281.2, "em_usd": 203.2, "em_latam": 313.5, "us_ig_y": 4.69, "us_hy_y": 6.69, "em_usd_y": 5.93, "em_latam_y": 7.11}, {"date": "2025-10-31", "us_ig": 78.5, "us_hy": 280.9, "em_usd": 181.9, "em_latam": 260.5, "us_ig_y": 4.82, "us_hy_y": 6.78, "em_usd_y": 5.82, "em_latam_y": 6.67}, {"date": "2025-11-07", "us_ig": 82.4, "us_hy": 296.4, "em_usd": 185.1, "em_latam": 268.0, "us_ig_y": 4.85, "us_hy_y": 6.9, "em_usd_y": 5.83, "em_latam_y": 6.74}, {"date": "2025-11-14", "us_ig": 82.3, "us_hy": 290.8, "em_usd": 180.8, "em_latam": 261.6, "us_ig_y": 4.89, "us_hy_y": 6.9, "em_usd_y": 5.84, "em_latam_y": 6.72}, {"date": "2025-11-21", "us_ig": 84.9, "us_hy": 300.8, "em_usd": 189.6, "em_latam": 273.0, "us_ig_y": 4.83, "us_hy_y": 6.9, "em_usd_y": 5.84, "em_latam_y": 6.75}, {"date": "2025-11-28", "us_ig": 80.4, "us_hy": 268.8, "em_usd": 188.4, "em_latam": 271.7, "us_ig_y": 4.76, "us_hy_y": 6.57, "em_usd_y": 5.8, "em_latam_y": 6.7}, {"date": "2025-12-05", "us_ig": 77.2, "us_hy": 264.3, "em_usd": 178.4, "em_latam": 258.2, "us_ig_y": 4.84, "us_hy_y": 6.58, "em_usd_y": 5.8, "em_latam_y": 6.68}, {"date": "2025-12-12", "us_ig": 78.1, "us_hy": 274.9, "em_usd": 177.3, "em_latam": 256.6, "us_ig_y": 4.87, "us_hy_y": 6.7, "em_usd_y": 5.81, "em_latam_y": 6.7}, {"date": "2025-12-19", "us_ig": 78.7, "us_hy": 275.0, "em_usd": 177.4, "em_latam": 252.9, "us_ig_y": 4.84, "us_hy_y": 6.63, "em_usd_y": 5.75, "em_latam_y": 6.57}, {"date": "2025-12-26", "us_ig": 76.5, "us_hy": 271.0, "em_usd": 178.6, "em_latam": 254.3, "us_ig_y": 4.81, "us_hy_y": 6.57, "em_usd_y": 5.77, "em_latam_y": 6.62}, {"date": "2026-01-02", "us_ig": 77.5, "us_hy": 268.1, "em_usd": 176.8, "em_latam": 252.1, "us_ig_y": 4.85, "us_hy_y": 6.57, "em_usd_y": 5.73, "em_latam_y": 6.46}, {"date": "2026-01-09", "us_ig": 76.6, "us_hy": 256.9, "em_usd": 176.3, "em_latam": 245.8, "us_ig_y": 4.84, "us_hy_y": 6.47, "em_usd_y": 5.73, "em_latam_y": 6.4}, {"date": "2026-01-16", "us_ig": 74.0, "us_hy": 251.0, "em_usd": 171.3, "em_latam": 238.8, "us_ig_y": 4.86, "us_hy_y": 6.57, "em_usd_y": 5.75, "em_latam_y": 6.43}, {"date": "2026-01-23", "us_ig": 72.0, "us_hy": 256.1, "em_usd": 169.1, "em_latam": 233.2, "us_ig_y": 4.85, "us_hy_y": 6.62, "em_usd_y": 5.73, "em_latam_y": 6.39}, {"date": "2026-01-30", "us_ig": 72.9, "us_hy": 265.1, "em_usd": 170.1, "em_latam": 231.6, "us_ig_y": 4.84, "us_hy_y": 6.58, "em_usd_y": 5.76, "em_latam_y": 6.47}, {"date": "2026-02-06", "us_ig": 74.5, "us_hy": 266.2, "em_usd": 172.4, "em_latam": 236.7, "us_ig_y": 4.83, "us_hy_y": 6.58, "em_usd_y": 5.75, "em_latam_y": 6.48}, {"date": "2026-02-13", "us_ig": 78.7, "us_hy": 279.6, "em_usd": 176.9, "em_latam": 243.8, "us_ig_y": 4.74, "us_hy_y": 6.62, "em_usd_y": 5.67, "em_latam_y": 6.42}, {"date": "2026-02-20", "us_ig": 76.5, "us_hy": 269.9, "em_usd": 173.7, "em_latam": 239.3, "us_ig_y": 4.75, "us_hy_y": 6.56, "em_usd_y": 5.68, "em_latam_y": 6.41}, {"date": "2026-02-27", "us_ig": 76.7, "us_hy": 273.3, "em_usd": 172.0, "em_latam": 230.9, "us_ig_y": 4.71, "us_hy_y": 6.68, "em_usd_y": 5.66, "em_latam_y": 6.43}, {"date": "2026-03-06", "us_ig": 82.9, "us_hy": 296.1, "em_usd": 184.5, "em_latam": 250.4, "us_ig_y": 4.9, "us_hy_y": 6.95, "em_usd_y": 5.87, "em_latam_y": 6.61}, {"date": "2026-03-13", "us_ig": 81.6, "us_hy": 291.9, "em_usd": 180.4, "em_latam": 244.1, "us_ig_y": 4.79, "us_hy_y": 6.74, "em_usd_y": 5.73, "em_latam_y": 6.44}, {"date": "2026-03-20", "us_ig": 87.2, "us_hy": 311.9, "em_usd": 194.9, "em_latam": 258.4, "us_ig_y": 5.22, "us_hy_y": 7.46, "em_usd_y": 6.25, "em_latam_y": 6.96}, {"date": "2026-03-27", "us_ig": 89.3, "us_hy": 331.3, "em_usd": 200.4, "em_latam": 264.4, "us_ig_y": 5.27, "us_hy_y": 7.68, "em_usd_y": 6.33, "em_latam_y": 7.05}, {"date": "2026-04-03", "us_ig": 82.3, "us_hy": 299.4, "em_usd": 199.8, "em_latam": 261.1, "us_ig_y": 5.14, "us_hy_y": 7.27, "em_usd_y": 6.26, "em_latam_y": 6.95}, {"date": "2026-04-10", "us_ig": 80.1, "us_hy": 278.3, "em_usd": 182.1, "em_latam": 243.9, "us_ig_y": 5.07, "us_hy_y": 6.98, "em_usd_y": 6.05, "em_latam_y": 6.79}, {"date": "2026-04-17", "us_ig": 78.8, "us_hy": 265.6, "em_usd": 174.7, "em_latam": 231.0, "us_ig_y": 4.97, "us_hy_y": 6.75, "em_usd_y": 5.89, "em_latam_y": 6.56}, {"date": "2026-04-24", "us_ig": 78.6, "us_hy": 272.1, "em_usd": 175.3, "em_latam": 233.1, "us_ig_y": 5.03, "us_hy_y": 6.9, "em_usd_y": 5.96, "em_latam_y": 6.66}, {"date": "2026-05-01", "us_ig": 79.1, "us_hy": 263.8, "em_usd": 171.5, "em_latam": 224.4, "us_ig_y": 5.13, "us_hy_y": 6.94, "em_usd_y": 6.0, "em_latam_y": 6.66}, {"date": "2026-05-08", "us_ig": 77.4, "us_hy": 266.0, "em_usd": 168.5, "em_latam": 223.5, "us_ig_y": 5.1, "us_hy_y": 6.94, "em_usd_y": 5.94, "em_latam_y": 6.59}, {"date": "2026-05-15", "us_ig": 73.4, "us_hy": 267.1, "em_usd": 166.5, "em_latam": 224.3, "us_ig_y": 5.27, "us_hy_y": 7.17, "em_usd_y": 6.15, "em_latam_y": 6.86}, {"date": "2026-05-22", "us_ig": null, "us_hy": null, "em_usd": null, "em_latam": null, "us_ig_y": null, "us_hy_y": null, "em_usd_y": null, "em_latam_y": null}], "flujos": [{"name": "ISHARES US TREASURY BOND ETF", "sector": "US Treasury", "ticker": "GOVT", "aum": 40981.0, "ret_1w": -0.93, "ret_1m": -1.88, "ret_ytd": -1.17, "ret_1y": 2.83, "aum_chg_1w": 0.73, "aum_chg_1m": 1.61, "aum_chg_ytd": 23.45, "aum_chg_1y": 47.48}, {"name": "ISHARES 1-3 YEAR TREASURY BO", "sector": "Short Term UST", "ticker": "SHY", "aum": 24937.0, "ret_1w": -0.17, "ret_1m": -0.46, "ret_ytd": 0.19, "ret_1y": 3.24, "aum_chg_1w": 0.51, "aum_chg_1m": -2.69, "aum_chg_ytd": 5.42, "aum_chg_1y": 1.01}, {"name": "ISHARES 7-10 YEAR TREASURY B", "sector": "Interm UST", "ticker": "IEF", "aum": 47225.0, "ret_1w": -1.31, "ret_1m": -2.65, "ret_ytd": -1.95, "ret_1y": 2.97, "aum_chg_1w": 0.73, "aum_chg_1m": -0.44, "aum_chg_ytd": 5.78, "aum_chg_1y": 34.27}, {"name": "ISHARES 20+ YEAR TREASURY BD", "sector": "Long Term UST", "ticker": "TLT", "aum": 42581.0, "ret_1w": -2.34, "ret_1m": -4.32, "ret_ytd": -3.34, "ret_1y": 0.85, "aum_chg_1w": 2.6, "aum_chg_1m": 5.62, "aum_chg_ytd": -6.69, "aum_chg_1y": -14.05}, {"name": "ISHARES CORE U.S. AGGREGATE", "sector": "US Agg", "ticker": "AGG", "aum": 134546.0, "ret_1w": -1.01, "ret_1m": -1.89, "ret_ytd": -0.96, "ret_1y": 4.02, "aum_chg_1w": 0.49, "aum_chg_1m": 0.54, "aum_chg_ytd": 0.11, "aum_chg_1y": 5.57}, {"name": "ISHARES INTL AGGREGATE BOND", "sector": "Global Agg", "ticker": "IAGG", "aum": 13306.0, "ret_1w": -0.45, "ret_1m": -1.11, "ret_ytd": -0.12, "ret_1y": 1.58, "aum_chg_1w": 0.23, "aum_chg_1m": 2.35, "aum_chg_ytd": 15.99, "aum_chg_1y": 80.18}, {"name": "ISHR IBX USD INVGD CB ETF-UI", "sector": "Corporate", "ticker": "LQD", "aum": 28020.0, "ret_1w": -1.28, "ret_1m": -2.22, "ret_ytd": -1.25, "ret_1y": 4.67, "aum_chg_1w": -3.05, "aum_chg_1m": -14.82, "aum_chg_ytd": -5.76, "aum_chg_1y": -12.68}, {"name": "ISHARES TIPS BOND ETF", "sector": "TIPS", "ticker": "TIP", "aum": 14967.0, "ret_1w": -0.98, "ret_1m": -0.8, "ret_ytd": 0.61, "ret_1y": 3.94, "aum_chg_1w": 0.64, "aum_chg_1m": 3.42, "aum_chg_ytd": 7.23, "aum_chg_1y": 5.38}, {"name": "SS BLACKSTONE SR LOAN ETF", "sector": "Loans", "ticker": "SRLN", "aum": 5226.0, "ret_1w": -0.23, "ret_1m": 0.46, "ret_ytd": 0.43, "ret_1y": 5.58, "aum_chg_1w": -0.54, "aum_chg_1m": 6.12, "aum_chg_ytd": -20.85, "aum_chg_1y": -28.83}, {"name": "ISHR IBX USD HIYLD CB ETF-UI", "sector": "High Yield", "ticker": "HYG", "aum": 16333.0, "ret_1w": -0.64, "ret_1m": -1.08, "ret_ytd": 0.4, "ret_1y": 5.97, "aum_chg_1w": -1.55, "aum_chg_1m": -1.86, "aum_chg_ytd": -18.28, "aum_chg_1y": -3.63}, {"name": "ISHARES JP MORGAN USD EMERGI", "sector": "Emerging", "ticker": "EMB", "aum": 13799.0, "ret_1w": -1.6, "ret_1m": -2.15, "ret_ytd": -0.44, "ret_1y": 9.53, "aum_chg_1w": -0.63, "aum_chg_1m": -4.61, "aum_chg_ytd": -16.38, "aum_chg_1y": -3.55}, {"name": "VANECK JPM EM LOCAL CURR BND", "sector": "Emerging Local", "ticker": "EMLC", "aum": 4808.0, "ret_1w": -1.74, "ret_1m": -3.37, "ret_ytd": -0.91, "ret_1y": 8.7, "aum_chg_1w": 0.64, "aum_chg_1m": -0.92, "aum_chg_ytd": 15.18, "aum_chg_1y": 61.61}], "flujos_date": "19/05/2026"};
+const DATA = {"curva": [{"tenor": "1M", "y_31_12": 3.689, "y_1wk": 3.636, "y_curr": 3.667, "d_31_12": -2.2, "d_1wk": 3.1}, {"tenor": "2M", "y_31_12": 3.678, "y_1wk": 3.663, "y_curr": 3.671, "d_31_12": -0.7, "d_1wk": 0.8}, {"tenor": "3M", "y_31_12": 3.686, "y_1wk": 3.673, "y_curr": 3.668, "d_31_12": -1.8, "d_1wk": -0.5}, {"tenor": "4M", "y_31_12": 3.693, "y_1wk": 3.698, "y_curr": 3.717, "d_31_12": 2.4, "d_1wk": 1.9}, {"tenor": "6M", "y_31_12": 3.663, "y_1wk": 3.73, "y_curr": 3.754, "d_31_12": 9.1, "d_1wk": 2.4}, {"tenor": "1Y", "y_31_12": 3.635, "y_1wk": 3.808, "y_curr": 3.843, "d_31_12": 20.8, "d_1wk": 3.5}, {"tenor": "2Y", "y_31_12": 3.718, "y_1wk": 4.072, "y_curr": 4.123, "d_31_12": 40.5, "d_1wk": 5.1}, {"tenor": "3Y", "y_31_12": 3.738, "y_1wk": 4.14, "y_curr": 4.173, "d_31_12": 43.5, "d_1wk": 3.3}, {"tenor": "5Y", "y_31_12": 3.859, "y_1wk": 4.259, "y_curr": 4.258, "d_31_12": 39.9, "d_1wk": -0.1}, {"tenor": "7Y", "y_31_12": 4.055, "y_1wk": 4.426, "y_curr": 4.402, "d_31_12": 34.7, "d_1wk": -2.4}, {"tenor": "10Y", "y_31_12": 4.278, "y_1wk": 4.594, "y_curr": 4.559, "d_31_12": 28.1, "d_1wk": -3.5}, {"tenor": "20Y", "y_31_12": 4.892, "y_1wk": 5.136, "y_curr": 5.074, "d_31_12": 18.2, "d_1wk": -6.2}, {"tenor": "30Y", "y_31_12": 4.905, "y_1wk": 5.118, "y_curr": 5.065, "d_31_12": 16.0, "d_1wk": -5.3}], "curva_diffs": {"Diff. 2Y - 10Y": {"y_31_12": 56.0, "y_1wk": 52.2, "y_curr": 43.6}, "Diff. 3M - 30Y": {"y_31_12": 121.9, "y_1wk": 144.5, "y_curr": 139.7}}, "curva_date": "22/05/26", "indices": {"Global": [{"ticker": "LEGATRUH Index", "sector": "Global Aggregate Hedged", "ytw": 3.87, "dur": 6.29, "mat": 8.16, "oas": 26.7, "rating": null, "ytw_1w_bps": -4.1, "spread_1w_bps": -0.6, "spread_1m_bps": -0.8, "spread_ytd_bps": -24.5, "ret_1w": 0.43, "ret_1m": -0.49, "ret_3m": -1.32, "ret_ytd": 0.01, "ret_3y": 4.42}, {"ticker": "LGCPTRUH Index", "sector": "Corporate Hedged", "ytw": 4.78, "dur": 5.97, "mat": 8.47, "oas": 76.7, "rating": "A3/BAA1", "ytw_1w_bps": -4.5, "spread_1w_bps": -0.6, "spread_1m_bps": -3.6, "spread_ytd_bps": -70.5, "ret_1w": 0.4, "ret_1m": -0.4, "ret_3m": -1.2, "ret_ytd": 0.13, "ret_3y": 5.97}, {"ticker": "LF93TRUH Index", "sector": "Multiverse Hedged", "ytw": 4.1, "dur": 6.18, "mat": 8.08, "oas": 35.6, "rating": null, "ytw_1w_bps": -3.9, "spread_1w_bps": -0.7, "spread_1m_bps": -0.9, "spread_ytd_bps": -34.7, "ret_1w": 0.42, "ret_1m": -0.49, "ret_3m": -1.29, "ret_ytd": 0.03, "ret_3y": 4.65}, {"ticker": "H30909US Index", "sector": "Bloomberg Global CoCo Banking Hedged", "ytw": 5.77, "dur": 3.82, "mat": 4.83, "oas": 219.0, "rating": "BAA3/BA1", "ytw_1w_bps": -0.8, "spread_1w_bps": 2.2, "spread_1m_bps": -4.1, "spread_ytd_bps": -237.1, "ret_1w": 0.25, "ret_1m": 0.1, "ret_3m": -0.15, "ret_ytd": 1.69, "ret_3y": 12.47}], "United States": [{"ticker": "LUATTRUU Index", "sector": "U.S. Treasury", "ytw": 4.41, "dur": 5.84, "mat": 7.69, "oas": null, "rating": "AA1/AA1", "ytw_1w_bps": 0.6, "spread_1w_bps": null, "spread_1m_bps": null, "spread_ytd_bps": null, "ret_1w": 0.18, "ret_1m": -1.12, "ret_3m": -1.99, "ret_ytd": -0.78, "ret_3y": 2.9}, {"ticker": "BNACTRUU Index", "sector": "Non-Agency CMBS", "ytw": 5.44, "dur": 3.38, "mat": 3.87, "oas": 117.7, "rating": "AAA/AA1", "ytw_1w_bps": 2.3, "spread_1w_bps": -0.1, "spread_1m_bps": -7.5, "spread_ytd_bps": -75.1, "ret_1w": -0.0, "ret_1m": -0.55, "ret_3m": -0.83, "ret_ytd": 0.38, "ret_3y": 6.57}, {"ticker": "LUACTRUU Index", "sector": "Corporate", "ytw": 5.26, "dur": 6.9, "mat": 10.45, "oas": 72.4, "rating": "A3/BAA1", "ytw_1w_bps": -1.3, "spread_1w_bps": -1.0, "spread_1m_bps": -4.8, "spread_ytd_bps": -57.7, "ret_1w": 0.32, "ret_1m": -0.8, "ret_3m": -1.59, "ret_ytd": -0.29, "ret_3y": 5.45}, {"ticker": "LD06TRUU Index", "sector": "Intermediate", "ytw": 4.96, "dur": 4.24, "mat": 4.95, "oas": 65.1, "rating": "A3/BAA1", "ytw_1w_bps": 0.3, "spread_1w_bps": -0.9, "spread_1m_bps": -4.6, "spread_ytd_bps": -50.6, "ret_1w": 0.1, "ret_1m": -0.65, "ret_3m": -1.04, "ret_ytd": -0.05, "ret_3y": 5.87}, {"ticker": "LCA3TRUU Index", "sector": "Aaa", "ytw": 5.1, "dur": 10.62, "mat": 17.73, "oas": 31.3, "rating": "AAA/AAA", "ytw_1w_bps": -3.0, "spread_1w_bps": -1.0, "spread_1m_bps": -1.3, "spread_ytd_bps": -25.2, "ret_1w": 0.64, "ret_1m": -1.32, "ret_3m": -2.53, "ret_ytd": -1.17, "ret_3y": 2.5}, {"ticker": "LCA2TRUU Index", "sector": "Aa", "ytw": 5.08, "dur": 8.04, "mat": 13.36, "oas": 47.6, "rating": "AA2/AA3", "ytw_1w_bps": -1.8, "spread_1w_bps": -1.2, "spread_1m_bps": -0.3, "spread_ytd_bps": -21.4, "ret_1w": 0.41, "ret_1m": -1.09, "ret_3m": -2.01, "ret_ytd": -0.72, "ret_3y": 3.8}, {"ticker": "LCA1TRUU Index", "sector": "A", "ytw": 5.13, "dur": 6.86, "mat": 10.11, "oas": 60.8, "rating": "A2/A3", "ytw_1w_bps": -1.1, "spread_1w_bps": -0.8, "spread_1m_bps": -4.1, "spread_ytd_bps": -48.4, "ret_1w": 0.3, "ret_1m": -0.86, "ret_3m": -1.67, "ret_ytd": -0.43, "ret_3y": 5.05}, {"ticker": "LCB1TRUU Index", "sector": "Baa", "ytw": 5.43, "dur": 6.64, "mat": 10.05, "oas": 90.3, "rating": "BAA1/BAA2", "ytw_1w_bps": -1.2, "spread_1w_bps": -1.1, "spread_1m_bps": -6.0, "spread_ytd_bps": -68.8, "ret_1w": 0.3, "ret_1m": -0.68, "ret_3m": -1.4, "ret_ytd": -0.06, "ret_3y": 6.16}, {"ticker": "LUMSTRUU Index", "sector": "U.S. MBS", "ytw": 5.06, "dur": 5.62, "mat": 7.46, "oas": 22.1, "rating": "AA1/AA1", "ytw_1w_bps": -5.4, "spread_1w_bps": -4.0, "spread_1m_bps": 2.1, "spread_ytd_bps": -29.3, "ret_1w": 0.42, "ret_1m": -1.07, "ret_3m": -1.69, "ret_ytd": -0.06, "ret_3y": 4.63}], "High-Yield": [{"ticker": "LG30TRUH Index", "sector": "Global High Yield Hedged", "ytw": 7.02, "dur": 3.9, "mat": 5.87, "oas": 282.5, "rating": null, "ytw_1w_bps": -1.3, "spread_1w_bps": 0.1, "spread_1m_bps": -5.5, "spread_ytd_bps": -262.0, "ret_1w": 0.23, "ret_1m": -0.07, "ret_3m": 0.13, "ret_ytd": 1.44, "ret_3y": 11.14}, {"ticker": "LF98TRUU Index", "sector": "U.S. Corporate High Yield", "ytw": 7.12, "dur": 3.28, "mat": 4.8, "oas": 260.5, "rating": "BA3/B1", "ytw_1w_bps": -5.0, "spread_1w_bps": -6.6, "spread_1m_bps": -8.9, "spread_ytd_bps": -208.2, "ret_1w": 0.29, "ret_1m": -0.15, "ret_3m": 0.27, "ret_ytd": 1.13, "ret_3y": 9.29}, {"ticker": "BCBATRUU Index", "sector": "Ba", "ytw": 6.03, "dur": 3.53, "mat": 5.07, "oas": 152.0, "rating": "BA2/BA3", "ytw_1w_bps": -7.4, "spread_1w_bps": -7.5, "spread_1m_bps": -11.3, "spread_ytd_bps": -143.3, "ret_1w": 0.28, "ret_1m": -0.15, "ret_3m": -0.02, "ret_ytd": 1.14, "ret_3y": 8.43}, {"ticker": "BCBHTRUU Index", "sector": "B", "ytw": 7.37, "dur": 2.97, "mat": 4.56, "oas": 283.2, "rating": "B1/B2", "ytw_1w_bps": -2.1, "spread_1w_bps": -6.1, "spread_1m_bps": -8.3, "spread_ytd_bps": -205.9, "ret_1w": 0.32, "ret_1m": 0.0, "ret_3m": 0.68, "ret_ytd": 1.22, "ret_3y": 9.08}, {"ticker": "BCAUTRUU Index", "sector": "Caa", "ytw": 11.41, "dur": 2.91, "mat": 4.02, "oas": 695.2, "rating": "CAA1/CAA2", "ytw_1w_bps": 1.7, "spread_1w_bps": 0.5, "spread_1m_bps": 19.5, "spread_ytd_bps": -313.1, "ret_1w": 0.28, "ret_1m": -0.06, "ret_3m": 1.24, "ret_ytd": 1.34, "ret_3y": 12.68}, {"ticker": "LP02TREU Index", "sector": "High Yield (Euro)", "ytw": 5.52, "dur": 3.11, "mat": 4.08, "oas": 272.6, "rating": "BA2/BA3", "ytw_1w_bps": -37.7, "spread_1w_bps": 12.5, "spread_1m_bps": -5.5, "spread_ytd_bps": -219.9, "ret_1w": 0.12, "ret_1m": 0.39, "ret_3m": -0.17, "ret_ytd": 0.8, "ret_3y": 7.48}], "Emerging Markets": [{"ticker": "EMUSTRUU Index", "sector": "EM USD Aggregate", "ytw": 6.17, "dur": 6.02, "mat": 9.56, "oas": 169.3, "rating": "BAA2/BAA3", "ytw_1w_bps": 2.5, "spread_1w_bps": 2.8, "spread_1m_bps": -1.4, "spread_ytd_bps": -169.5, "ret_1w": 0.19, "ret_1m": -0.66, "ret_3m": -1.17, "ret_ytd": 0.36, "ret_3y": 8.66}, {"ticker": "BEHGTRUU Index", "sector": "Investment Grade", "ytw": 5.31, "dur": 6.45, "mat": 10.12, "oas": 82.5, "rating": "A3/BAA1", "ytw_1w_bps": 1.8, "spread_1w_bps": 2.3, "spread_1m_bps": -2.6, "spread_ytd_bps": -51.7, "ret_1w": 0.19, "ret_1m": -0.91, "ret_3m": -1.76, "ret_ytd": -0.53, "ret_3y": 5.1}, {"ticker": "BEBGTRUU Index", "sector": "High Yield", "ytw": 7.63, "dur": 5.28, "mat": 8.63, "oas": 316.0, "rating": "BA3/B1", "ytw_1w_bps": 3.3, "spread_1w_bps": 3.1, "spread_1m_bps": -2.3, "spread_ytd_bps": -378.0, "ret_1w": 0.18, "ret_1m": -0.22, "ret_3m": -0.15, "ret_ytd": 1.92, "ret_3y": 15.01}, {"ticker": "BSELTRUU Index", "sector": "EM USD LATAM", "ytw": 6.87, "dur": 6.6, "mat": 11.37, "oas": 226.7, "rating": "BA1/BA2", "ytw_1w_bps": 1.5, "spread_1w_bps": 2.4, "spread_1m_bps": -0.1, "spread_ytd_bps": -190.4, "ret_1w": 0.13, "ret_1m": -0.74, "ret_3m": -0.67, "ret_ytd": 1.28, "ret_3y": 11.76}]}, "indices_date": "22/05/26", "spreads": [{"date": "2023-12-29", "us_ig": 98.7, "us_hy": 323.3, "em_usd": 296.7, "em_latam": 425.1, "us_ig_y": 5.06, "us_hy_y": 7.59, "em_usd_y": 7.04, "em_latam_y": 8.29}, {"date": "2024-01-05", "us_ig": 103.3, "us_hy": 352.8, "em_usd": 302.3, "em_latam": 437.1, "us_ig_y": 5.28, "us_hy_y": 8.0, "em_usd_y": 7.26, "em_latam_y": 8.58}, {"date": "2024-01-12", "us_ig": 96.5, "us_hy": 337.5, "em_usd": 303.2, "em_latam": 430.3, "us_ig_y": 5.07, "us_hy_y": 7.71, "em_usd_y": 7.13, "em_latam_y": 8.39}, {"date": "2024-01-19", "us_ig": 95.2, "us_hy": 338.4, "em_usd": 298.8, "em_latam": 430.9, "us_ig_y": 5.26, "us_hy_y": 7.89, "em_usd_y": 7.28, "em_latam_y": 8.58}, {"date": "2024-01-26", "us_ig": 92.5, "us_hy": 324.8, "em_usd": 297.5, "em_latam": 427.7, "us_ig_y": 5.23, "us_hy_y": 7.75, "em_usd_y": 7.26, "em_latam_y": 8.56}, {"date": "2024-02-02", "us_ig": 96.3, "us_hy": 329.9, "em_usd": 297.5, "em_latam": 431.9, "us_ig_y": 5.18, "us_hy_y": 7.76, "em_usd_y": 7.18, "em_latam_y": 8.5}, {"date": "2024-02-09", "us_ig": 95.4, "us_hy": 315.5, "em_usd": 289.4, "em_latam": 426.6, "us_ig_y": 5.31, "us_hy_y": 7.75, "em_usd_y": 7.24, "em_latam_y": 8.59}, {"date": "2024-02-16", "us_ig": 91.6, "us_hy": 314.4, "em_usd": 281.4, "em_latam": 411.8, "us_ig_y": 5.4, "us_hy_y": 7.87, "em_usd_y": 7.29, "em_latam_y": 8.57}, {"date": "2024-02-23", "us_ig": 90.7, "us_hy": 305.6, "em_usd": 276.5, "em_latam": 405.9, "us_ig_y": 5.37, "us_hy_y": 7.8, "em_usd_y": 7.23, "em_latam_y": 8.49}, {"date": "2024-03-01", "us_ig": 97.3, "us_hy": 316.3, "em_usd": 282.7, "em_latam": 414.3, "us_ig_y": 5.34, "us_hy_y": 7.82, "em_usd_y": 7.2, "em_latam_y": 8.49}, {"date": "2024-03-08", "us_ig": 94.8, "us_hy": 314.0, "em_usd": 283.3, "em_latam": 417.1, "us_ig_y": 5.23, "us_hy_y": 7.72, "em_usd_y": 7.12, "em_latam_y": 8.43}, {"date": "2024-03-15", "us_ig": 89.5, "us_hy": 302.0, "em_usd": 270.5, "em_latam": 403.3, "us_ig_y": 5.42, "us_hy_y": 7.82, "em_usd_y": 7.23, "em_latam_y": 8.52}, {"date": "2024-03-22", "us_ig": 88.3, "us_hy": 296.5, "em_usd": 264.4, "em_latam": 388.4, "us_ig_y": 5.29, "us_hy_y": 7.64, "em_usd_y": 7.05, "em_latam_y": 8.27}, {"date": "2024-03-29", "us_ig": 90.0, "us_hy": 299.1, "em_usd": 264.1, "em_latam": 385.2, "us_ig_y": 5.3, "us_hy_y": 7.66, "em_usd_y": 7.04, "em_latam_y": 8.21}, {"date": "2024-04-05", "us_ig": 89.0, "us_hy": 303.2, "em_usd": 257.2, "em_latam": 373.2, "us_ig_y": 5.45, "us_hy_y": 7.84, "em_usd_y": 7.14, "em_latam_y": 8.27}, {"date": "2024-04-12", "us_ig": 89.4, "us_hy": 310.4, "em_usd": 259.1, "em_latam": 377.2, "us_ig_y": 5.59, "us_hy_y": 8.06, "em_usd_y": 7.3, "em_latam_y": 8.44}, {"date": "2024-04-19", "us_ig": 91.8, "us_hy": 323.0, "em_usd": 261.9, "em_latam": 378.7, "us_ig_y": 5.71, "us_hy_y": 8.27, "em_usd_y": 7.42, "em_latam_y": 8.56}, {"date": "2024-04-26", "us_ig": 87.4, "us_hy": 304.0, "em_usd": 259.3, "em_latam": 371.3, "us_ig_y": 5.71, "us_hy_y": 8.13, "em_usd_y": 7.44, "em_latam_y": 8.53}, {"date": "2024-05-03", "us_ig": 85.9, "us_hy": 293.0, "em_usd": 261.8, "em_latam": 374.4, "us_ig_y": 5.52, "us_hy_y": 7.85, "em_usd_y": 7.28, "em_latam_y": 8.38}, {"date": "2024-05-10", "us_ig": 87.1, "us_hy": 298.2, "em_usd": 255.8, "em_latam": 371.6, "us_ig_y": 5.55, "us_hy_y": 7.92, "em_usd_y": 7.24, "em_latam_y": 8.37}, {"date": "2024-05-17", "us_ig": 86.5, "us_hy": 296.9, "em_usd": 250.2, "em_latam": 369.1, "us_ig_y": 5.47, "us_hy_y": 7.85, "em_usd_y": 7.12, "em_latam_y": 8.27}, {"date": "2024-05-24", "us_ig": 86.7, "us_hy": 300.0, "em_usd": 252.5, "em_latam": 379.9, "us_ig_y": 5.54, "us_hy_y": 7.95, "em_usd_y": 7.21, "em_latam_y": 8.44}, {"date": "2024-05-31", "us_ig": 84.6, "us_hy": 307.9, "em_usd": 253.3, "em_latam": 377.6, "us_ig_y": 5.52, "us_hy_y": 8.0, "em_usd_y": 7.21, "em_latam_y": 8.42}, {"date": "2024-06-07", "us_ig": 87.7, "us_hy": 303.4, "em_usd": 259.2, "em_latam": 398.3, "us_ig_y": 5.5, "us_hy_y": 7.93, "em_usd_y": 7.22, "em_latam_y": 8.58}, {"date": "2024-06-14", "us_ig": 92.2, "us_hy": 320.3, "em_usd": 263.1, "em_latam": 397.2, "us_ig_y": 5.34, "us_hy_y": 7.91, "em_usd_y": 7.06, "em_latam_y": 8.36}, {"date": "2024-06-21", "us_ig": 93.5, "us_hy": 314.5, "em_usd": 262.5, "em_latam": 394.2, "us_ig_y": 5.39, "us_hy_y": 7.9, "em_usd_y": 7.09, "em_latam_y": 8.37}, {"date": "2024-06-28", "us_ig": 93.9, "us_hy": 309.1, "em_usd": 261.7, "em_latam": 395.5, "us_ig_y": 5.48, "us_hy_y": 7.91, "em_usd_y": 7.17, "em_latam_y": 8.47}, {"date": "2024-07-05", "us_ig": 89.0, "us_hy": 313.8, "em_usd": 265.2, "em_latam": 402.1, "us_ig_y": 5.34, "us_hy_y": 7.86, "em_usd_y": 7.1, "em_latam_y": 8.44}, {"date": "2024-07-12", "us_ig": 89.2, "us_hy": 306.8, "em_usd": 262.1, "em_latam": 394.5, "us_ig_y": 5.22, "us_hy_y": 7.67, "em_usd_y": 6.95, "em_latam_y": 8.25}, {"date": "2024-07-19", "us_ig": 91.1, "us_hy": 303.1, "em_usd": 263.0, "em_latam": 402.2, "us_ig_y": 5.3, "us_hy_y": 7.67, "em_usd_y": 7.02, "em_latam_y": 8.39}, {"date": "2024-07-26", "us_ig": 92.9, "us_hy": 305.6, "em_usd": 266.8, "em_latam": 401.0, "us_ig_y": 5.26, "us_hy_y": 7.63, "em_usd_y": 7.0, "em_latam_y": 8.33}, {"date": "2024-08-02", "us_ig": 104.5, "us_hy": 358.9, "em_usd": 291.3, "em_latam": 427.2, "us_ig_y": 4.94, "us_hy_y": 7.7, "em_usd_y": 6.8, "em_latam_y": 8.16}, {"date": "2024-08-09", "us_ig": 102.5, "us_hy": 338.7, "em_usd": 281.3, "em_latam": 414.2, "us_ig_y": 5.08, "us_hy_y": 7.66, "em_usd_y": 6.86, "em_latam_y": 8.18}, {"date": "2024-08-16", "us_ig": 95.6, "us_hy": 318.6, "em_usd": 272.5, "em_latam": 400.0, "us_ig_y": 4.97, "us_hy_y": 7.47, "em_usd_y": 6.74, "em_latam_y": 8.0}, {"date": "2024-08-23", "us_ig": 93.9, "us_hy": 311.6, "em_usd": 273.1, "em_latam": 405.3, "us_ig_y": 4.86, "us_hy_y": 7.31, "em_usd_y": 6.65, "em_latam_y": 7.97}, {"date": "2024-08-30", "us_ig": 92.6, "us_hy": 304.9, "em_usd": 261.9, "em_latam": 392.5, "us_ig_y": 4.94, "us_hy_y": 7.3, "em_usd_y": 6.62, "em_latam_y": 7.93}, {"date": "2024-09-06", "us_ig": 97.8, "us_hy": 322.1, "em_usd": 267.9, "em_latam": 409.8, "us_ig_y": 4.76, "us_hy_y": 7.24, "em_usd_y": 6.43, "em_latam_y": 7.87}, {"date": "2024-09-13", "us_ig": 96.1, "us_hy": 321.8, "em_usd": 267.3, "em_latam": 403.6, "us_ig_y": 4.68, "us_hy_y": 7.18, "em_usd_y": 6.38, "em_latam_y": 7.75}, {"date": "2024-09-20", "us_ig": 90.7, "us_hy": 301.0, "em_usd": 254.7, "em_latam": 385.5, "us_ig_y": 4.67, "us_hy_y": 6.98, "em_usd_y": 6.3, "em_latam_y": 7.63}, {"date": "2024-09-27", "us_ig": 89.3, "us_hy": 298.8, "em_usd": 250.4, "em_latam": 380.8, "us_ig_y": 4.68, "us_hy_y": 6.98, "em_usd_y": 6.27, "em_latam_y": 7.6}, {"date": "2024-10-04", "us_ig": 83.5, "us_hy": 283.9, "em_usd": 237.2, "em_latam": 358.6, "us_ig_y": 4.88, "us_hy_y": 7.1, "em_usd_y": 6.4, "em_latam_y": 7.62}, {"date": "2024-10-11", "us_ig": 80.6, "us_hy": 294.2, "em_usd": 232.0, "em_latam": 357.8, "us_ig_y": 4.93, "us_hy_y": 7.24, "em_usd_y": 6.42, "em_latam_y": 7.7}, {"date": "2024-10-18", "us_ig": 81.1, "us_hy": 285.8, "em_usd": 230.9, "em_latam": 355.4, "us_ig_y": 4.93, "us_hy_y": 7.16, "em_usd_y": 6.41, "em_latam_y": 7.67}, {"date": "2024-10-25", "us_ig": 82.4, "us_hy": 285.5, "em_usd": 227.7, "em_latam": 350.7, "us_ig_y": 5.1, "us_hy_y": 7.3, "em_usd_y": 6.53, "em_latam_y": 7.78}, {"date": "2024-11-01", "us_ig": 83.2, "us_hy": 275.0, "em_usd": 222.2, "em_latam": 346.9, "us_ig_y": 5.23, "us_hy_y": 7.31, "em_usd_y": 6.6, "em_latam_y": 7.87}, {"date": "2024-11-08", "us_ig": 73.9, "us_hy": 256.1, "em_usd": 215.4, "em_latam": 331.7, "us_ig_y": 5.09, "us_hy_y": 7.12, "em_usd_y": 6.49, "em_latam_y": 7.66}, {"date": "2024-11-15", "us_ig": 77.9, "us_hy": 265.7, "em_usd": 216.4, "em_latam": 333.4, "us_ig_y": 5.25, "us_hy_y": 7.29, "em_usd_y": 6.61, "em_latam_y": 7.82}, {"date": "2024-11-22", "us_ig": 77.8, "us_hy": 257.5, "em_usd": 214.1, "em_latam": 326.0, "us_ig_y": 5.25, "us_hy_y": 7.24, "em_usd_y": 6.6, "em_latam_y": 7.74}, {"date": "2024-11-29", "us_ig": 77.9, "us_hy": 265.6, "em_usd": 221.8, "em_latam": 336.1, "us_ig_y": 5.05, "us_hy_y": 7.14, "em_usd_y": 6.48, "em_latam_y": 7.64}, {"date": "2024-12-06", "us_ig": 77.7, "us_hy": 263.3, "em_usd": 221.8, "em_latam": 332.5, "us_ig_y": 4.98, "us_hy_y": 7.05, "em_usd_y": 6.42, "em_latam_y": 7.54}, {"date": "2024-12-13", "us_ig": 75.0, "us_hy": 261.8, "em_usd": 212.4, "em_latam": 320.6, "us_ig_y": 5.17, "us_hy_y": 7.19, "em_usd_y": 6.53, "em_latam_y": 7.65}, {"date": "2024-12-20", "us_ig": 79.1, "us_hy": 284.5, "em_usd": 217.5, "em_latam": 328.6, "us_ig_y": 5.32, "us_hy_y": 7.5, "em_usd_y": 6.69, "em_latam_y": 7.84}, {"date": "2024-12-27", "us_ig": 77.1, "us_hy": 280.0, "em_usd": 214.5, "em_latam": 323.8, "us_ig_y": 5.37, "us_hy_y": 7.5, "em_usd_y": 6.72, "em_latam_y": 7.86}, {"date": "2025-01-03", "us_ig": 79.5, "us_hy": 274.3, "em_usd": 216.2, "em_latam": 323.3, "us_ig_y": 5.36, "us_hy_y": 7.39, "em_usd_y": 6.71, "em_latam_y": 7.83}, {"date": "2025-01-10", "us_ig": 80.4, "us_hy": 273.6, "em_usd": 211.4, "em_latam": 315.4, "us_ig_y": 5.52, "us_hy_y": 7.52, "em_usd_y": 6.8, "em_latam_y": 7.91}, {"date": "2025-01-17", "us_ig": 79.8, "us_hy": 262.5, "em_usd": 216.6, "em_latam": 321.9, "us_ig_y": 5.38, "us_hy_y": 7.29, "em_usd_y": 6.72, "em_latam_y": 7.83}, {"date": "2025-01-24", "us_ig": 77.8, "us_hy": 255.8, "em_usd": 211.9, "em_latam": 317.8, "us_ig_y": 5.35, "us_hy_y": 7.23, "em_usd_y": 6.67, "em_latam_y": 7.79}, {"date": "2025-01-31", "us_ig": 78.6, "us_hy": 260.6, "em_usd": 208.5, "em_latam": 307.3, "us_ig_y": 5.3, "us_hy_y": 7.2, "em_usd_y": 6.58, "em_latam_y": 7.62}, {"date": "2025-02-07", "us_ig": 82.1, "us_hy": 263.6, "em_usd": 208.7, "em_latam": 307.6, "us_ig_y": 5.3, "us_hy_y": 7.25, "em_usd_y": 6.55, "em_latam_y": 7.58}, {"date": "2025-02-14", "us_ig": 77.9, "us_hy": 260.1, "em_usd": 207.3, "em_latam": 307.5, "us_ig_y": 5.26, "us_hy_y": 7.19, "em_usd_y": 6.53, "em_latam_y": 7.57}, {"date": "2025-02-21", "us_ig": 79.7, "us_hy": 270.8, "em_usd": 211.9, "em_latam": 316.1, "us_ig_y": 5.22, "us_hy_y": 7.23, "em_usd_y": 6.52, "em_latam_y": 7.61}, {"date": "2025-02-28", "us_ig": 86.7, "us_hy": 280.4, "em_usd": 221.0, "em_latam": 330.1, "us_ig_y": 5.08, "us_hy_y": 7.15, "em_usd_y": 6.41, "em_latam_y": 7.54}, {"date": "2025-03-07", "us_ig": 87.1, "us_hy": 290.8, "em_usd": 218.2, "em_latam": 323.5, "us_ig_y": 5.18, "us_hy_y": 7.3, "em_usd_y": 6.47, "em_latam_y": 7.57}, {"date": "2025-03-14", "us_ig": 93.1, "us_hy": 320.8, "em_usd": 223.8, "em_latam": 334.0, "us_ig_y": 5.24, "us_hy_y": 7.59, "em_usd_y": 6.52, "em_latam_y": 7.67}, {"date": "2025-03-21", "us_ig": 90.2, "us_hy": 316.5, "em_usd": 227.6, "em_latam": 336.9, "us_ig_y": 5.15, "us_hy_y": 7.52, "em_usd_y": 6.49, "em_latam_y": 7.64}, {"date": "2025-03-28", "us_ig": 92.7, "us_hy": 339.8, "em_usd": 231.8, "em_latam": 342.3, "us_ig_y": 5.17, "us_hy_y": 7.72, "em_usd_y": 6.53, "em_latam_y": 7.69}, {"date": "2025-04-04", "us_ig": 108.9, "us_hy": 426.7, "em_usd": 262.5, "em_latam": 380.5, "us_ig_y": 5.1, "us_hy_y": 8.3, "em_usd_y": 6.61, "em_latam_y": 7.84}, {"date": "2025-04-11", "us_ig": 113.5, "us_hy": 418.7, "em_usd": 267.0, "em_latam": 380.6, "us_ig_y": 5.55, "us_hy_y": 8.58, "em_usd_y": 7.04, "em_latam_y": 8.25}, {"date": "2025-04-18", "us_ig": 108.0, "us_hy": 398.0, "em_usd": 257.3, "em_latam": 362.9, "us_ig_y": 5.34, "us_hy_y": 8.19, "em_usd_y": 6.79, "em_latam_y": 7.92}, {"date": "2025-04-25", "us_ig": 100.8, "us_hy": 360.2, "em_usd": 246.0, "em_latam": 343.3, "us_ig_y": 5.21, "us_hy_y": 7.8, "em_usd_y": 6.62, "em_latam_y": 7.67}, {"date": "2025-05-02", "us_ig": 102.3, "us_hy": 351.6, "em_usd": 243.6, "em_latam": 342.1, "us_ig_y": 5.28, "us_hy_y": 7.76, "em_usd_y": 6.65, "em_latam_y": 7.71}, {"date": "2025-05-09", "us_ig": 98.9, "us_hy": 343.2, "em_usd": 236.6, "em_latam": 331.5, "us_ig_y": 5.3, "us_hy_y": 7.74, "em_usd_y": 6.64, "em_latam_y": 7.66}, {"date": "2025-05-16", "us_ig": 89.7, "us_hy": 305.3, "em_usd": 221.9, "em_latam": 314.7, "us_ig_y": 5.29, "us_hy_y": 7.46, "em_usd_y": 6.58, "em_latam_y": 7.57}, {"date": "2025-05-23", "us_ig": 91.3, "us_hy": 330.3, "em_usd": 222.9, "em_latam": 313.4, "us_ig_y": 5.35, "us_hy_y": 7.69, "em_usd_y": 6.62, "em_latam_y": 7.61}, {"date": "2025-05-30", "us_ig": 88.1, "us_hy": 314.6, "em_usd": 224.5, "em_latam": 318.1, "us_ig_y": 5.21, "us_hy_y": 7.46, "em_usd_y": 6.54, "em_latam_y": 7.55}, {"date": "2025-06-06", "us_ig": 85.0, "us_hy": 299.8, "em_usd": 214.2, "em_latam": 305.8, "us_ig_y": 5.29, "us_hy_y": 7.43, "em_usd_y": 6.55, "em_latam_y": 7.53}, {"date": "2025-06-13", "us_ig": 85.3, "us_hy": 307.7, "em_usd": 218.1, "em_latam": 303.0, "us_ig_y": 5.2, "us_hy_y": 7.42, "em_usd_y": 6.49, "em_latam_y": 7.41}, {"date": "2025-06-20", "us_ig": 84.6, "us_hy": 299.0, "em_usd": 220.2, "em_latam": 308.3, "us_ig_y": 5.16, "us_hy_y": 7.3, "em_usd_y": 6.48, "em_latam_y": 7.44}, {"date": "2025-06-27", "us_ig": 84.5, "us_hy": 291.8, "em_usd": 218.3, "em_latam": 303.9, "us_ig_y": 5.06, "us_hy_y": 7.1, "em_usd_y": 6.35, "em_latam_y": 7.29}, {"date": "2025-07-04", "us_ig": 76.9, "us_hy": 267.6, "em_usd": 203.7, "em_latam": 290.4, "us_ig_y": 5.05, "us_hy_y": 6.95, "em_usd_y": 6.29, "em_latam_y": 7.22}, {"date": "2025-07-11", "us_ig": 80.2, "us_hy": 283.0, "em_usd": 202.4, "em_latam": 287.8, "us_ig_y": 5.14, "us_hy_y": 7.14, "em_usd_y": 6.33, "em_latam_y": 7.26}, {"date": "2025-07-18", "us_ig": 77.5, "us_hy": 283.2, "em_usd": 204.0, "em_latam": 293.9, "us_ig_y": 5.11, "us_hy_y": 7.11, "em_usd_y": 6.34, "em_latam_y": 7.32}, {"date": "2025-07-25", "us_ig": 75.8, "us_hy": 273.7, "em_usd": 199.6, "em_latam": 288.5, "us_ig_y": 5.07, "us_hy_y": 7.03, "em_usd_y": 6.27, "em_latam_y": 7.23}, {"date": "2025-08-01", "us_ig": 80.5, "us_hy": 300.7, "em_usd": 209.3, "em_latam": 299.1, "us_ig_y": 4.94, "us_hy_y": 7.11, "em_usd_y": 6.19, "em_latam_y": 7.16}, {"date": "2025-08-08", "us_ig": 78.3, "us_hy": 283.3, "em_usd": 197.9, "em_latam": 284.3, "us_ig_y": 4.98, "us_hy_y": 6.99, "em_usd_y": 6.14, "em_latam_y": 7.07}, {"date": "2025-08-15", "us_ig": 73.1, "us_hy": 279.4, "em_usd": 188.9, "em_latam": 272.5, "us_ig_y": 4.95, "us_hy_y": 6.95, "em_usd_y": 6.07, "em_latam_y": 6.98}, {"date": "2025-08-22", "us_ig": 74.9, "us_hy": 279.1, "em_usd": 194.8, "em_latam": 280.8, "us_ig_y": 4.91, "us_hy_y": 6.87, "em_usd_y": 6.07, "em_latam_y": 7.0}, {"date": "2025-08-29", "us_ig": 79.0, "us_hy": 272.3, "em_usd": 199.4, "em_latam": 289.5, "us_ig_y": 4.91, "us_hy_y": 6.75, "em_usd_y": 6.07, "em_latam_y": 7.05}, {"date": "2025-09-05", "us_ig": 77.4, "us_hy": 272.4, "em_usd": 202.4, "em_latam": 290.8, "us_ig_y": 4.78, "us_hy_y": 6.66, "em_usd_y": 5.99, "em_latam_y": 6.94}, {"date": "2025-09-12", "us_ig": 74.3, "us_hy": 269.8, "em_usd": 199.9, "em_latam": 299.8, "us_ig_y": 4.74, "us_hy_y": 6.64, "em_usd_y": 5.96, "em_latam_y": 7.03}, {"date": "2025-09-19", "us_ig": 71.7, "us_hy": 261.7, "em_usd": 206.2, "em_latam": 330.9, "us_ig_y": 4.76, "us_hy_y": 6.58, "em_usd_y": 6.05, "em_latam_y": 7.35}, {"date": "2025-09-26", "us_ig": 73.8, "us_hy": 265.6, "em_usd": 192.4, "em_latam": 291.8, "us_ig_y": 4.84, "us_hy_y": 6.71, "em_usd_y": 5.99, "em_latam_y": 7.06}, {"date": "2025-10-03", "us_ig": 72.5, "us_hy": 268.1, "em_usd": 197.1, "em_latam": 301.0, "us_ig_y": 4.78, "us_hy_y": 6.68, "em_usd_y": 5.97, "em_latam_y": 7.04}, {"date": "2025-10-10", "us_ig": 79.2, "us_hy": 303.6, "em_usd": 205.6, "em_latam": 312.1, "us_ig_y": 4.78, "us_hy_y": 6.99, "em_usd_y": 6.01, "em_latam_y": 7.14}, {"date": "2025-10-17", "us_ig": 77.9, "us_hy": 292.6, "em_usd": 208.2, "em_latam": 315.9, "us_ig_y": 4.71, "us_hy_y": 6.79, "em_usd_y": 5.98, "em_latam_y": 7.13}, {"date": "2025-10-24", "us_ig": 75.2, "us_hy": 281.2, "em_usd": 203.2, "em_latam": 313.5, "us_ig_y": 4.69, "us_hy_y": 6.69, "em_usd_y": 5.93, "em_latam_y": 7.11}, {"date": "2025-10-31", "us_ig": 78.5, "us_hy": 280.9, "em_usd": 181.9, "em_latam": 260.5, "us_ig_y": 4.82, "us_hy_y": 6.78, "em_usd_y": 5.82, "em_latam_y": 6.67}, {"date": "2025-11-07", "us_ig": 82.4, "us_hy": 296.4, "em_usd": 185.1, "em_latam": 268.0, "us_ig_y": 4.85, "us_hy_y": 6.9, "em_usd_y": 5.83, "em_latam_y": 6.74}, {"date": "2025-11-14", "us_ig": 82.3, "us_hy": 290.8, "em_usd": 180.8, "em_latam": 261.6, "us_ig_y": 4.89, "us_hy_y": 6.9, "em_usd_y": 5.84, "em_latam_y": 6.72}, {"date": "2025-11-21", "us_ig": 84.9, "us_hy": 300.8, "em_usd": 189.6, "em_latam": 273.0, "us_ig_y": 4.83, "us_hy_y": 6.9, "em_usd_y": 5.84, "em_latam_y": 6.75}, {"date": "2025-11-28", "us_ig": 80.4, "us_hy": 268.8, "em_usd": 188.4, "em_latam": 271.7, "us_ig_y": 4.76, "us_hy_y": 6.57, "em_usd_y": 5.8, "em_latam_y": 6.7}, {"date": "2025-12-05", "us_ig": 77.2, "us_hy": 264.3, "em_usd": 178.4, "em_latam": 258.2, "us_ig_y": 4.84, "us_hy_y": 6.58, "em_usd_y": 5.8, "em_latam_y": 6.68}, {"date": "2025-12-12", "us_ig": 78.1, "us_hy": 274.9, "em_usd": 177.3, "em_latam": 256.6, "us_ig_y": 4.87, "us_hy_y": 6.7, "em_usd_y": 5.81, "em_latam_y": 6.7}, {"date": "2025-12-19", "us_ig": 78.7, "us_hy": 275.0, "em_usd": 177.4, "em_latam": 252.9, "us_ig_y": 4.84, "us_hy_y": 6.63, "em_usd_y": 5.75, "em_latam_y": 6.57}, {"date": "2025-12-26", "us_ig": 76.5, "us_hy": 271.0, "em_usd": 178.6, "em_latam": 254.3, "us_ig_y": 4.81, "us_hy_y": 6.57, "em_usd_y": 5.77, "em_latam_y": 6.62}, {"date": "2026-01-02", "us_ig": 77.5, "us_hy": 268.1, "em_usd": 176.8, "em_latam": 252.1, "us_ig_y": 4.85, "us_hy_y": 6.57, "em_usd_y": 5.73, "em_latam_y": 6.46}, {"date": "2026-01-09", "us_ig": 76.6, "us_hy": 256.9, "em_usd": 176.3, "em_latam": 245.8, "us_ig_y": 4.84, "us_hy_y": 6.47, "em_usd_y": 5.73, "em_latam_y": 6.4}, {"date": "2026-01-16", "us_ig": 74.0, "us_hy": 251.0, "em_usd": 171.3, "em_latam": 238.8, "us_ig_y": 4.86, "us_hy_y": 6.57, "em_usd_y": 5.75, "em_latam_y": 6.43}, {"date": "2026-01-23", "us_ig": 72.0, "us_hy": 256.1, "em_usd": 169.1, "em_latam": 233.2, "us_ig_y": 4.85, "us_hy_y": 6.62, "em_usd_y": 5.73, "em_latam_y": 6.39}, {"date": "2026-01-30", "us_ig": 72.9, "us_hy": 265.1, "em_usd": 170.1, "em_latam": 231.6, "us_ig_y": 4.84, "us_hy_y": 6.58, "em_usd_y": 5.76, "em_latam_y": 6.47}, {"date": "2026-02-06", "us_ig": 74.5, "us_hy": 266.2, "em_usd": 172.4, "em_latam": 236.7, "us_ig_y": 4.83, "us_hy_y": 6.58, "em_usd_y": 5.75, "em_latam_y": 6.48}, {"date": "2026-02-13", "us_ig": 78.7, "us_hy": 279.6, "em_usd": 176.9, "em_latam": 243.8, "us_ig_y": 4.74, "us_hy_y": 6.62, "em_usd_y": 5.67, "em_latam_y": 6.42}, {"date": "2026-02-20", "us_ig": 76.5, "us_hy": 269.9, "em_usd": 173.7, "em_latam": 239.3, "us_ig_y": 4.75, "us_hy_y": 6.56, "em_usd_y": 5.68, "em_latam_y": 6.41}, {"date": "2026-02-27", "us_ig": 76.7, "us_hy": 273.3, "em_usd": 172.0, "em_latam": 230.9, "us_ig_y": 4.71, "us_hy_y": 6.68, "em_usd_y": 5.66, "em_latam_y": 6.43}, {"date": "2026-03-06", "us_ig": 82.9, "us_hy": 296.1, "em_usd": 184.5, "em_latam": 250.4, "us_ig_y": 4.9, "us_hy_y": 6.95, "em_usd_y": 5.87, "em_latam_y": 6.61}, {"date": "2026-03-13", "us_ig": 81.6, "us_hy": 291.9, "em_usd": 180.4, "em_latam": 244.1, "us_ig_y": 4.79, "us_hy_y": 6.74, "em_usd_y": 5.73, "em_latam_y": 6.44}, {"date": "2026-03-20", "us_ig": 87.2, "us_hy": 311.9, "em_usd": 194.9, "em_latam": 258.4, "us_ig_y": 5.22, "us_hy_y": 7.46, "em_usd_y": 6.25, "em_latam_y": 6.96}, {"date": "2026-03-27", "us_ig": 89.3, "us_hy": 331.3, "em_usd": 200.4, "em_latam": 264.4, "us_ig_y": 5.27, "us_hy_y": 7.68, "em_usd_y": 6.33, "em_latam_y": 7.05}, {"date": "2026-04-03", "us_ig": 82.3, "us_hy": 299.4, "em_usd": 199.8, "em_latam": 261.1, "us_ig_y": 5.14, "us_hy_y": 7.27, "em_usd_y": 6.26, "em_latam_y": 6.95}, {"date": "2026-04-10", "us_ig": 80.1, "us_hy": 278.3, "em_usd": 182.1, "em_latam": 243.9, "us_ig_y": 5.07, "us_hy_y": 6.98, "em_usd_y": 6.05, "em_latam_y": 6.79}, {"date": "2026-04-17", "us_ig": 78.8, "us_hy": 265.6, "em_usd": 174.7, "em_latam": 231.0, "us_ig_y": 4.97, "us_hy_y": 6.75, "em_usd_y": 5.89, "em_latam_y": 6.56}, {"date": "2026-04-24", "us_ig": 78.6, "us_hy": 272.1, "em_usd": 175.3, "em_latam": 233.1, "us_ig_y": 5.03, "us_hy_y": 6.9, "em_usd_y": 5.96, "em_latam_y": 6.66}, {"date": "2026-05-01", "us_ig": 79.1, "us_hy": 263.8, "em_usd": 171.5, "em_latam": 224.4, "us_ig_y": 5.13, "us_hy_y": 6.94, "em_usd_y": 6.0, "em_latam_y": 6.66}, {"date": "2026-05-08", "us_ig": 77.4, "us_hy": 266.0, "em_usd": 168.5, "em_latam": 223.5, "us_ig_y": 5.1, "us_hy_y": 6.94, "em_usd_y": 5.94, "em_latam_y": 6.59}, {"date": "2026-05-15", "us_ig": 73.4, "us_hy": 267.1, "em_usd": 166.5, "em_latam": 224.3, "us_ig_y": 5.27, "us_hy_y": 7.17, "em_usd_y": 6.15, "em_latam_y": 6.86}, {"date": "2026-05-22", "us_ig": 72.4, "us_hy": 260.5, "em_usd": 169.3, "em_latam": 226.7, "us_ig_y": 5.26, "us_hy_y": 7.12, "em_usd_y": 6.17, "em_latam_y": 6.87}], "flujos": [{"name": "ISHARES US TREASURY BOND ETF", "sector": "US Treasury", "ticker": "GOVT", "aum": 41404.0, "ret_1w": 0.35, "ret_1m": -0.94, "ret_ytd": -0.46, "ret_1y": 3.82, "aum_chg_1w": 0.68, "aum_chg_1m": 1.64, "aum_chg_ytd": 24.01, "aum_chg_1y": 48.18}, {"name": "ISHARES 1-3 YEAR TREASURY BO", "sector": "Short Term UST", "ticker": "SHY", "aum": 25277.0, "ret_1w": 0.02, "ret_1m": -0.25, "ret_ytd": 0.32, "ret_1y": 3.29, "aum_chg_1w": 1.34, "aum_chg_1m": -0.5, "aum_chg_ytd": 6.74, "aum_chg_1y": 1.12}, {"name": "ISHARES 7-10 YEAR TREASURY B", "sector": "Interm UST", "ticker": "IEF", "aum": 47774.0, "ret_1w": 0.44, "ret_1m": -1.43, "ret_ytd": -1.11, "ret_1y": 4.01, "aum_chg_1w": 0.72, "aum_chg_1m": -0.38, "aum_chg_ytd": 6.15, "aum_chg_1y": 34.2}, {"name": "ISHARES 20+ YEAR TREASURY BD", "sector": "Long Term UST", "ticker": "TLT", "aum": 43009.0, "ret_1w": 1.34, "ret_1m": -1.98, "ret_ytd": -1.39, "ret_1y": 4.71, "aum_chg_1w": -0.33, "aum_chg_1m": 2.91, "aum_chg_ytd": -7.73, "aum_chg_1y": -18.19}, {"name": "ISHARES CORE U.S. AGGREGATE", "sector": "US Agg", "ticker": "AGG", "aum": 135369.0, "ret_1w": 0.44, "ret_1m": -0.82, "ret_ytd": -0.14, "ret_1y": 5.3, "aum_chg_1w": 0.17, "aum_chg_1m": 0.29, "aum_chg_ytd": -0.1, "aum_chg_1y": 4.89}, {"name": "ISHARES INTL AGGREGATE BOND", "sector": "Global Agg", "ticker": "IAGG", "aum": 13400.0, "ret_1w": 0.5, "ret_1m": -0.1, "ret_ytd": 0.66, "ret_1y": 2.49, "aum_chg_1w": 0.2, "aum_chg_1m": 2.28, "aum_chg_ytd": 16.04, "aum_chg_1y": 33.53}, {"name": "ISHR IBX USD INVGD CB ETF-UI", "sector": "Corporate", "ticker": "LQD", "aum": 29259.0, "ret_1w": 0.66, "ret_1m": -0.74, "ret_ytd": -0.15, "ret_1y": 6.66, "aum_chg_1w": 3.76, "aum_chg_1m": -3.61, "aum_chg_ytd": -2.75, "aum_chg_1y": -9.16}, {"name": "ISHARES TIPS BOND ETF", "sector": "TIPS", "ticker": "TIP", "aum": 14956.0, "ret_1w": -0.09, "ret_1m": -0.77, "ret_ytd": 0.93, "ret_1y": 4.59, "aum_chg_1w": 0.02, "aum_chg_1m": 2.79, "aum_chg_ytd": 6.84, "aum_chg_1y": 4.86}, {"name": "SS BLACKSTONE SR LOAN ETF", "sector": "Loans", "ticker": "SRLN", "aum": 5255.0, "ret_1w": -0.12, "ret_1m": 0.68, "ret_ytd": 0.36, "ret_1y": 5.7, "aum_chg_1w": 0.67, "aum_chg_1m": 4.51, "aum_chg_ytd": -20.35, "aum_chg_1y": -28.44}, {"name": "ISHR IBX USD HIYLD CB ETF-UI", "sector": "High Yield", "ticker": "HYG", "aum": 16108.0, "ret_1w": 0.47, "ret_1m": -0.19, "ret_ytd": 1.09, "ret_1y": 7.29, "aum_chg_1w": -1.84, "aum_chg_1m": -4.2, "aum_chg_ytd": -20.1, "aum_chg_1y": -6.15}, {"name": "ISHARES JP MORGAN USD EMERGI", "sector": "Emerging", "ticker": "EMB", "aum": 13906.0, "ret_1w": 0.58, "ret_1m": -0.65, "ret_ytd": 0.6, "ret_1y": 11.38, "aum_chg_1w": 0.2, "aum_chg_1m": -3.21, "aum_chg_ytd": -16.77, "aum_chg_1y": -1.38}, {"name": "VANECK JPM EM LOCAL CURR BND", "sector": "Emerging Local", "ticker": "EMLC", "aum": 4828.0, "ret_1w": 0.32, "ret_1m": -1.02, "ret_ytd": 0.14, "ret_1y": 8.92, "aum_chg_1w": 0.1, "aum_chg_1m": -1.55, "aum_chg_ytd": 14.6, "aum_chg_1y": 55.24}], "flujos_date": "22/05/26"};
 
 // === Modal handlers ===
 function openModal(id) {
@@ -1794,24 +2107,24 @@ const fmtBp = (n, d = 1) => {
 function buildCreditTable() {
   const tbody = document.getElementById('credit-table-body');
   const regions = DATA.indices;
+  const cls = v => v == null ? '' : (v > 0 ? 'pos' : (v < 0 ? 'neg' : ''));
   let html = '';
   for (const [region, items] of Object.entries(regions)) {
-    html += `<tr class="region-row"><td colspan="11">${region}</td></tr>`;
+    html += `<tr class="region-row"><td colspan="12">${region}</td></tr>`;
     for (const i of items) {
-      const ret1w = i.ret_1w;
-      const cls = ret1w >= 0 ? 'pos' : 'neg';
       html += `<tr>
-        <td><span class="sector">${i.sector}</span>${i.rating ? `<span class="rating">${i.rating}</span>` : ''}</td>
+        <td><span class="sector">${i.sector}</span></td>
         <td class="num">${fmt(i.ytw)}</td>
         <td class="num">${fmt(i.dur)}</td>
         <td class="num">${fmt(i.mat)}</td>
         <td class="num">${i.oas !== null ? fmt(i.oas, 1) : '—'}</td>
-        <td class="num">${fmtBp(i.ytw_1w_bps)}</td>
-        <td class="num">${i.spread_1w_bps !== null ? fmtBp(i.spread_1w_bps) : '—'}</td>
-        <td class="num ${cls}">${fmtPct(i.ret_1w)}</td>
-        <td class="num ${i.ret_1m >= 0 ? 'pos' : 'neg'}">${fmtPct(i.ret_1m)}</td>
-        <td class="num ${i.ret_ytd >= 0 ? 'pos' : 'neg'}">${fmtPct(i.ret_ytd)}</td>
-        <td class="num ${i.ret_1y >= 0 ? 'pos' : 'neg'}">${fmtPct(i.ret_1y)}</td>
+        <td class="num ${cls(i.ytw_1w_bps)}">${fmtBp(i.ytw_1w_bps)}</td>
+        <td class="num ${cls(i.spread_1w_bps)}">${i.spread_1w_bps !== null ? fmtBp(i.spread_1w_bps) : '—'}</td>
+        <td class="num ${cls(i.spread_ytd_bps)}">${i.spread_ytd_bps !== null ? fmtBp(i.spread_ytd_bps) : '—'}</td>
+        <td class="num ${cls(i.ret_1w)}">${fmtPct(i.ret_1w)}</td>
+        <td class="num ${cls(i.ret_1m)}">${fmtPct(i.ret_1m)}</td>
+        <td class="num ${cls(i.ret_ytd)}">${fmtPct(i.ret_ytd)}</td>
+        <td class="num ${cls(i.ret_3y)}">${fmtPct(i.ret_3y)}</td>
       </tr>`;
     }
   }
@@ -1901,7 +2214,7 @@ function buildCurveChart() {
       const ycurr = parseFloat(pt.dataset.ycurr);
       const d1w = parseFloat(pt.dataset.d1w);
       tooltip.innerHTML = `
-        <div class="tt-tenor">${tenor} · Δ 1w ${d1w >= 0 ? '+' : ''}${d1w.toFixed(1)} pb</div>
+        <div class="tt-tenor">${tenor} · Var. 1w ${d1w >= 0 ? '+' : ''}${d1w.toFixed(1)} pb</div>
         <div class="tt-row"><span class="tt-sw" style="background:#aab3c0;"></span><span class="tt-lab">31/12/25</span><span class="tt-val">${y31.toFixed(2).replace('.', ',')}%</span></div>
         <div class="tt-row"><span class="tt-sw" style="background:#ecae7e;"></span><span class="tt-lab">1 sem atrás</span><span class="tt-val">${y1w.toFixed(2).replace('.', ',')}%</span></div>
         <div class="tt-row"><span class="tt-sw" style="background:#0c2e4e;"></span><span class="tt-lab">Actual</span><span class="tt-val">${ycurr.toFixed(2).replace('.', ',')}%</span></div>
@@ -1940,133 +2253,197 @@ function buildCurveChart() {
   });
 }
 
-// === SPREADS HISTÓRICO INTERACTIVO ===
-function buildSpreadsChart() {
-  const svg = document.getElementById('spreads-svg');
-  const tooltip = document.getElementById('spreads-tooltip');
-  const card = document.getElementById('spreads-card');
-
-  const raw = DATA.spreads.filter(s => s.us_ig !== null);
-  document.getElementById('spreads-count').textContent = raw.length;
-
+// === DIFERENCIAL · 4 mini-charts (spread + yield dual-axis, interactivos) ===
+function buildSpreadsMini() {
   const series = [
-    { key: 'us_ig', label: 'US IG Corp', color: '#0c2e4e', field: 'us_ig' },
-    { key: 'us_hy', label: 'US HY Corp', color: '#d98326', field: 'us_hy' },
-    { key: 'em_usd', label: 'USD EM Debt', color: '#51a97f', field: 'em_usd' },
-    { key: 'em_latam', label: 'USD LATAM', color: '#c43e3d', field: 'em_latam' },
+    { id: 'us_ig',    sField: 'us_ig',    yField: 'us_ig_y' },
+    { id: 'us_hy',    sField: 'us_hy',    yField: 'us_hy_y' },
+    { id: 'em_usd',   sField: 'em_usd',   yField: 'em_usd_y' },
+    { id: 'em_latam', sField: 'em_latam', yField: 'em_latam_y' },
   ];
+  const raw = DATA.spreads.filter(s => s.us_ig !== null);
+  series.forEach(s => renderMini(raw, s));
+}
 
-  // Domain
-  const allValues = raw.flatMap(d => series.map(s => d[s.field]).filter(v => v !== null));
-  const yMin = Math.floor(Math.min(...allValues) / 50) * 50;
-  const yMax = Math.ceil(Math.max(...allValues) / 50) * 50;
-
-  // SVG dimensions
-  const W = 1100, H = 380;
-  const margin = { top: 30, right: 30, bottom: 60, left: 60 };
-  const innerW = W - margin.left - margin.right;
-  const innerH = H - margin.top - margin.bottom;
-
-  const xMap = i => margin.left + (i / (raw.length - 1)) * innerW;
-  const yMap = v => margin.top + innerH - ((v - yMin) / (yMax - yMin)) * innerH;
-
-  // Y axis grid + labels
-  const yTicks = 5;
-  let gridHtml = '', yAxisHtml = '';
-  for (let t = 0; t <= yTicks; t++) {
-    const val = yMin + (yMax - yMin) * (t / yTicks);
-    const y = yMap(val);
-    gridHtml += `<line x1="${margin.left}" y1="${y}" x2="${W - margin.right}" y2="${y}" stroke="#eef1f5" stroke-width="1"/>`;
-    yAxisHtml += `<text x="${margin.left - 10}" y="${y + 4}" text-anchor="end" font-family="Open Sans" font-size="11" fill="#6b7785" font-weight="600">${val} pb</text>`;
-  }
-  document.getElementById('spreads-grid').innerHTML = gridHtml;
-  document.getElementById('spreads-yaxis').innerHTML = yAxisHtml;
-
-  // X axis: show quarterly labels
-  let xAxisHtml = '';
-  const step = Math.floor(raw.length / 8);
-  for (let i = 0; i < raw.length; i += step) {
-    const d = new Date(raw[i].date);
-    const lab = d.toLocaleDateString('es-AR', { month: 'short', year: '2-digit' });
-    xAxisHtml += `<text x="${xMap(i)}" y="${H - margin.bottom + 22}" text-anchor="middle" font-family="Open Sans" font-size="11" fill="#6b7785" font-weight="600">${lab}</text>`;
-  }
-  document.getElementById('spreads-xaxis').innerHTML = xAxisHtml;
-
-  // Lines
-  let linesHtml = '';
-  for (const s of series) {
-    const pts = raw.map((d, i) => `${xMap(i)},${yMap(d[s.field])}`).join(' ');
-    linesHtml += `<polyline class="series-line" data-series="${s.key}" fill="none" stroke="${s.color}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" points="${pts}"/>`;
-  }
-  document.getElementById('spreads-lines').innerHTML = linesHtml;
-
-  // Points (smaller, hoverable)
-  let pointsHtml = '';
-  for (const s of series) {
-    for (let i = 0; i < raw.length; i++) {
-      const d = raw[i];
-      pointsHtml += `<circle class="point" data-series="${s.key}" data-idx="${i}" cx="${xMap(i)}" cy="${yMap(d[s.field])}" r="2.5" fill="${s.color}" stroke="#fff" stroke-width="1" style="opacity:0;"/>`;
-    }
-  }
-  document.getElementById('spreads-points').innerHTML = pointsHtml;
-
-  // On mousemove over SVG: find closest column and show tooltip with all 4 values
-  svg.addEventListener('mousemove', e => {
-    const rect = svg.getBoundingClientRect();
-    const scaleX = W / rect.width;
-    const mx = (e.clientX - rect.left) * scaleX;
-    // Find closest index
-    const idx = Math.round((mx - margin.left) / innerW * (raw.length - 1));
-    if (idx < 0 || idx >= raw.length) { tooltip.style.opacity = '0'; return; }
-    const d = raw[idx];
-    const dt = new Date(d.date).toLocaleDateString('es-AR', { day: '2-digit', month: 'short', year: 'numeric' });
-    tooltip.innerHTML = `
-      <div class="tt-tenor">${dt}</div>
-      ${series.map(s => `<div class="tt-row"><span class="tt-sw" style="background:${s.color};"></span><span class="tt-lab">${s.label}</span><span class="tt-val">${d[s.field].toFixed(1).replace('.', ',')} pb</span></div>`).join('')}
-    `;
-    const cardRect = card.getBoundingClientRect();
-    const tooltipX = (xMap(idx) / W) * rect.width + (rect.left - cardRect.left);
-    const tooltipY = (yMap(Math.max(...series.map(s => d[s.field]))) / H) * rect.height + (rect.top - cardRect.top);
-    tooltip.style.left = (tooltipX - tooltip.offsetWidth / 2) + 'px';
-    tooltip.style.top = (tooltipY - tooltip.offsetHeight - 16) + 'px';
-    tooltip.style.opacity = '1';
-
-    // Show points at this column
-    document.querySelectorAll('#spreads-points circle').forEach(p => {
-      p.style.opacity = p.dataset.idx == idx ? '1' : '0';
-      if (p.dataset.idx == idx) p.setAttribute('r', '4.5');
-      else p.setAttribute('r', '2.5');
-    });
-  });
-  svg.addEventListener('mouseleave', () => {
-    tooltip.style.opacity = '0';
-    document.querySelectorAll('#spreads-points circle').forEach(p => { p.style.opacity = '0'; p.setAttribute('r', '2.5'); });
-  });
-
-  // Legend hover
-  const legend = document.getElementById('spreads-legend');
-  const lgItems = legend.querySelectorAll('.lg');
-  lgItems.forEach(lg => {
+function renderMini(data, s) {
+  const svg = document.getElementById('sp-svg-' + s.id);
+  const tooltip = document.getElementById('sp-tt-' + s.id);
+  const card = document.getElementById('sp-card-' + s.id);
+  if (!svg) return;
+  // Build legend interactivity
+  const legendItems = card.querySelectorAll('.chart-legend .lg');
+  legendItems.forEach((lg, idx) => {
+    lg.dataset.kind = idx === 0 ? 's' : 'y';
     lg.addEventListener('mouseenter', () => {
-      const key = lg.dataset.series;
-      document.querySelectorAll('#spreads-svg .series-line').forEach(l => {
-        if (l.dataset.series !== key) l.classList.add('dim');
-        else l.classList.add('boost');
+      const kind = lg.dataset.kind;
+      svg.querySelectorAll('.sp-line').forEach(p => {
+        if (p.dataset.kind !== kind) p.classList.add('dim');
+        else p.classList.add('boost');
       });
-      lgItems.forEach(o => { if (o !== lg) o.classList.add('dim'); });
+      legendItems.forEach(o => { if (o !== lg) o.classList.add('dim'); });
     });
     lg.addEventListener('mouseleave', () => {
-      document.querySelectorAll('#spreads-svg .series-line').forEach(l => { l.classList.remove('dim'); l.classList.remove('boost'); });
-      lgItems.forEach(o => o.classList.remove('dim'));
+      svg.querySelectorAll('.sp-line').forEach(p => { p.classList.remove('dim'); p.classList.remove('boost'); });
+      legendItems.forEach(o => o.classList.remove('dim'));
     });
   });
+
+  const W = 600, H = 280;
+  const pad = { l: 46, r: 46, t: 14, b: 36 };
+  const plotW = W - pad.l - pad.r;
+  const plotH = H - pad.t - pad.b;
+
+  const spreadVals = data.map(d => d[s.sField]);
+  const yieldVals  = data.map(d => d[s.yField]);
+  const sMin = Math.min(...spreadVals), sMax = Math.max(...spreadVals);
+  const yMin = Math.min(...yieldVals),  yMax = Math.max(...yieldVals);
+  const sPad = (sMax - sMin) * 0.08 || 1;
+  const yPad = (yMax - yMin) * 0.08 || 0.1;
+  const sLo = sMin - sPad, sHi = sMax + sPad;
+  const yLo = yMin - yPad, yHi = yMax + yPad;
+
+  const xOf = i => pad.l + (i / (data.length - 1)) * plotW;
+  const yOfS = v => pad.t + (1 - (v - sLo) / (sHi - sLo)) * plotH;
+  const yOfY = v => pad.t + (1 - (v - yLo) / (yHi - yLo)) * plotH;
+
+  // build grid + axes
+  let html = '';
+  const yTicks = 4;
+  html += '<g stroke="#eef1f5" stroke-width="1">';
+  for (let i = 0; i <= yTicks; i++) {
+    const y = pad.t + (i / yTicks) * plotH;
+    html += `<line x1="${pad.l}" y1="${y.toFixed(1)}" x2="${W - pad.r}" y2="${y.toFixed(1)}"/>`;
+  }
+  html += '</g>';
+
+  // y-axis labels (left: spread bps, right: yield %)
+  html += '<g font-family="Open Sans" font-size="10" fill="#6b7785" font-weight="600">';
+  for (let i = 0; i <= yTicks; i++) {
+    const y = pad.t + (i / yTicks) * plotH;
+    const sVal = sHi - (i / yTicks) * (sHi - sLo);
+    const yVal = yHi - (i / yTicks) * (yHi - yLo);
+    html += `<text x="${pad.l - 6}" y="${(y + 3).toFixed(1)}" text-anchor="end" fill="#d98326">${sVal.toFixed(0)}</text>`;
+    html += `<text x="${W - pad.r + 6}" y="${(y + 3).toFixed(1)}" text-anchor="start" fill="#0c2e4e">${yVal.toFixed(2).replace('.', ',')}</text>`;
+  }
+  html += '</g>';
+
+  // x-axis labels (~6 dates spaced)
+  const labelsHtml = [];
+  const numLabels = 6;
+  for (let i = 0; i < numLabels; i++) {
+    const idx = Math.round((data.length - 1) * (i / (numLabels - 1)));
+    const d = new Date(data[idx].date);
+    const lab = d.toLocaleDateString('es-AR', { month: 'short', year: '2-digit' });
+    labelsHtml.push(`<text x="${xOf(idx).toFixed(1)}" y="${(H - pad.b + 18).toFixed(1)}" font-family="Open Sans" font-size="10" fill="#6b7785" font-weight="600" text-anchor="middle">${lab}</text>`);
+  }
+  html += '<g>' + labelsHtml.join('') + '</g>';
+
+  // spread line (orange)
+  let sPath = '';
+  data.forEach((d, i) => {
+    const x = xOf(i).toFixed(1);
+    const y = yOfS(d[s.sField]).toFixed(1);
+    sPath += (i === 0 ? 'M' : 'L') + x + ',' + y + ' ';
+  });
+  html += `<path class="sp-line" data-kind="s" d="${sPath}" fill="none" stroke="#d98326" stroke-width="2" stroke-linejoin="round"/>`;
+
+  // yield line (navy)
+  let yPath = '';
+  data.forEach((d, i) => {
+    const x = xOf(i).toFixed(1);
+    const y = yOfY(d[s.yField]).toFixed(1);
+    yPath += (i === 0 ? 'M' : 'L') + x + ',' + y + ' ';
+  });
+  html += `<path class="sp-line" data-kind="y" d="${yPath}" fill="none" stroke="#0c2e4e" stroke-width="2" stroke-linejoin="round"/>`;
+
+  // hover points (invisible)
+  let pts = '';
+  data.forEach((d, i) => {
+    pts += `<circle cx="${xOf(i).toFixed(1)}" cy="${yOfS(d[s.sField]).toFixed(1)}" r="3" fill="#d98326" opacity="0" data-i="${i}" data-kind="s"/>`;
+    pts += `<circle cx="${xOf(i).toFixed(1)}" cy="${yOfY(d[s.yField]).toFixed(1)}" r="3" fill="#0c2e4e" opacity="0" data-i="${i}" data-kind="y"/>`;
+  });
+  html += '<g class="mini-points">' + pts + '</g>';
+
+  svg.innerHTML = html;
+
+  // tooltip interactions
+  const onMove = (e) => {
+    const rect = svg.getBoundingClientRect();
+    const x = (e.clientX - rect.left) * (W / rect.width);
+    let nearestI = 0, minDist = Infinity;
+    data.forEach((d, i) => {
+      const dist = Math.abs(xOf(i) - x);
+      if (dist < minDist) { minDist = dist; nearestI = i; }
+    });
+    const d = data[nearestI];
+    const dateStr = new Date(d.date).toLocaleDateString('es-AR', { day: '2-digit', month: 'short', year: 'numeric' });
+    tooltip.innerHTML = `
+      <div class="tt-tenor">${dateStr}</div>
+      <div class="tt-row"><span class="tt-sw" style="background:#d98326;"></span><span class="tt-lab">Diferencial</span><span class="tt-val">${d[s.sField].toFixed(1)} pb</span></div>
+      <div class="tt-row"><span class="tt-sw" style="background:#0c2e4e;"></span><span class="tt-lab">Yield</span><span class="tt-val">${d[s.yField].toFixed(2).replace('.', ',')}%</span></div>
+    `;
+    tooltip.style.opacity = '1';
+    const cardRect = card.getBoundingClientRect();
+    tooltip.style.left = (e.clientX - cardRect.left + 14) + 'px';
+    tooltip.style.top  = (e.clientY - cardRect.top  + 14) + 'px';
+  };
+  svg.addEventListener('mousemove', onMove);
+  svg.addEventListener('mouseleave', () => { tooltip.style.opacity = '0'; });
 }
 
 // Initialize
 buildCreditTable();
 buildFlowsTable();
 buildCurveChart();
-buildSpreadsChart();
+buildSpreadsMini();
 </script>
+
+<!-- ── Back-to-top button (added) ── -->
+<button class="back-to-top" id="back-to-top" aria-label="Volver arriba" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l7-7 7 7M12 6v15"/></svg>
+</button>
+
+<script>
+(function() {
+  const btn = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) btn.classList.add('visible');
+    else btn.classList.remove('visible');
+  });
+})();
+</script>
+
+
+<!-- ── Back-to-top button (added) ── -->
+<button class="back-to-top" id="back-to-top" aria-label="Volver arriba" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l7-7 7 7M12 6v15"/></svg>
+</button>
+
+<script>
+(function() {
+  const btn = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) btn.classList.add('visible');
+    else btn.classList.remove('visible');
+  });
+})();
+</script>
+
+
+<!-- ── Back-to-top button (added) ── -->
+<button class="back-to-top" id="back-to-top" aria-label="Volver arriba" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l7-7 7 7M12 6v15"/></svg>
+</button>
+
+<script>
+(function() {
+  const btn = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) btn.classList.add('visible');
+    else btn.classList.remove('visible');
+  });
+})();
+</script>
+
 </body>
 </html>
